@@ -1,0 +1,9 @@
+{% macro styleDatatable() %}
+     <link href="{{ asset('assets/libs/datatables/datatables.min.css') }}" rel="stylesheet">
+{% endmacro %}
+
+{% macro scriptDatatable() %}
+       <script src="{{ asset('assets/libs/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/pdfmake/pdfmake.min.js') }}"></script>
+{% endmacro %}

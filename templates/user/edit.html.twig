@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+   
+
+    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+   
+{% endblock %}
+{% block javascripts %}
+
+<script>
+
+
+    
+  $(document).ready(function() {
+   
+      $('#user_plainPassword').attr("required", false);
+   });
+    
+</script>
+ {% endblock %}

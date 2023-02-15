@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Iron Tree |
+			{% block title %}{% endblock %}
+		</title>
+		<link
+		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		<link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico')}}">
+		{% include "layouts/head-css.html.twig" %}
+		{% block stylesheets %}{% endblock %}
+
+
+	</head>
+	<body
+		data-sidebar="dark">
+		<!-- Begin page -->
+		<div class="account-pages my-5 pt-sm-5"> {% block body %}{% endblock %}
+			</div>
+			<!-- container-fluid -->
+
+			<!-- End Page-content -->
+
+		<!-- end main content-->
+
+			<!-- END layout-wrapper -->
+			<!-- Right Sidebar -->
+			<!-- /Right-bar -->
+		</body>
+		{% include "layouts/vendor-scripts.html.twig"%}
+		{% block javascripts %}{% endblock %}
+	</html>

@@ -1,0 +1,60 @@
+# Etiquetas globales
+labels:
+    edit: >
+        Editar
+    delete: >
+        Eliminar
+    new: >
+        Nuevo
+    save: >
+        Guardar
+    update: >
+        Actualizar
+    cancel: >
+        Cancelar
+
+menu:
+    administration: >
+        Administración
+    administration_gestion: >
+        Administración de Gestión
+
+user:
+    props:
+        email: >
+            Correo
+        password: >
+            Contraseña
+        first_name: >
+            Nombres
+        last_name: >
+            Apellidos
+        roles: >
+            Roles
+        active: >
+            Activo
+        isVerified: >
+            correo verificado
+        actions: >
+            Acciones
+    index:
+        title: >
+            Administración de usuarios
+        description: >
+            El módulo de administración de usuarios permite gestionar los usuarios de la plataforma.
+        new: >
+            Nuevo usuario
+        show: >
+            Vista de usuario
+        no_videos: >
+            Aún no hay usuarios registrados la plataforma.
+        back_to_index: >
+            Volver a la lista de usuarios
+    new:
+        title: >
+            Crear nuevo usuario
+
+    edit:
+        title: >
+            Editar usuario
+

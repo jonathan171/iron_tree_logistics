@@ -1,0 +1,66 @@
+<div class="row">
+	<div class="col-md-12 col-xl-12">
+		{{ form_start(form) }}
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title mb-4"> 
+                    {% if form.vars.data.id %}
+                        {{ "user.edit.title"|trans }}
+                    {% else %}
+                        {{ "user.new.title"|trans }}
+                    {% endif %}</h4>
+
+				
+					<div class="mb-3">
+						{{ form_label(form.email, "user.props.email"|trans) }}
+						{{ form_widget(form.email) }}
+					</div>
+                    <div class="mb-3">
+						{{ form_label(form.plainPassword, "user.props.password"|trans) }}
+						 {{ form_widget(form.plainPassword) }}
+					</div>
+                     <div class="mb-3">
+						{{ form_label(form.firstName, "user.props.first_name"|trans) }}
+						{{ form_widget(form.firstName) }}
+					</div>
+                    <div class="mb-3">
+						 {{ form_label(form.lastName, "user.props.last_name"|trans) }}
+						 {{ form_widget(form.lastName) }}
+					</div>
+                     <div class="mb-3">
+						 {{ form_label(form.roles, "user.props.roles"|trans) }}
+						 {{ form_widget(form.roles) }}
+					</div>
+                    <div class="mb-3">
+						{{ form_label(form.active, "user.props.active"|trans) }}
+						 {{ form_widget(form.active) }}
+					</div>
+                    <div class="mb-3">
+						 {{ form_label(form.isVerified, "user.props.isVerified"|trans) }}
+						 {{ form_widget(form.isVerified) }}
+					</div>
+
+					<div class="card-footer">
+                            <button class="btn btn-success" type="submit">
+                                <i class="fe fe-save"></i>
+
+                                {% if form.vars.data.id %}
+                                    {{ "labels.update"|trans }}
+                                {% else %}
+                                    {{ "labels.save"|trans }}
+                                {% endif %}
+                            </button>
+
+                            <a href="{{ path('app_user_index') }}" class="btn btn-primary">
+                                <i class="fe fe-arrow-left"></i> {{ "user.index.back_to_index"|trans }}
+                            </a>
+                        </div>
+				
+			</div>
+			<!-- end card body -->
+		</div>
+		{{ form_end(form) }}
+		<!-- end card -->
+	</div>
+	<!-- end col -->
+</div>

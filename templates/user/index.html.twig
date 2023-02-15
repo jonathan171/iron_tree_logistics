@@ -1,4 +1,4 @@
-
+{% extends 'base.html.twig' %}
 
 {% block title %}
 	{{ "user.index.title"|trans }}
@@ -34,11 +34,33 @@
 								<th>
 									{{"user.props.email"|trans}}
 								</th>
-    
+								<th>
+									{{"user.props.first_name"|trans}}
+								</th>
+								<th>
+									{{ "user.props.last_name"|trans }}
+								</th>
+								<th class="text-center">
+									{{ "user.props.actions"|trans }}
+								</th>
 							</tr>
 						</thead>
 						
 						<tbody>
+						<tr>
+								<th>
+									{{"user.props.email"|trans}}
+								</th>
+								<th>
+									{{"user.props.first_name"|trans}}
+								</th>
+								<th>
+									{{ "user.props.last_name"|trans }}
+								</th>
+								<th class="text-center">
+									{{ "user.props.actions"|trans }}
+								</th>
+							</tr>
 						</tbody>
 					</table>
 
@@ -74,7 +96,9 @@
             },
             columns: [
                 {data: 'email'},
-    
+                {data: 'nombres'},
+                {data: 'apellidos'},
+                {data: 'actions'}               
                 ],
             columnDefs: [
                 
