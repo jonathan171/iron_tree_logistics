@@ -58,3 +58,48 @@ user:
         title: >
             Editar usuario
 
+# traduccion loads
+loads:
+    props:
+        fuel_surcharge: >
+            recargo por combustible
+        well_name: >
+            destino
+        code: >
+            código
+        driver_name: >
+            Transportador
+        arrived_at_loader: >
+            Fecha de Recogida
+        loaded_distance: >
+            Distancia
+        line_haul: >
+            linea de transporte
+        order_status: >
+            estado de Orden
+        billing_status: >
+            estado de factura
+        trier: >
+            Nivel
+        actions: >
+            Acciones
+    index:
+        title: >
+            Administración de Cargas
+        description: >
+            El módulo de administración de cargas permite gestionar las cargas de la plataforma.
+        new: >
+            Nueva Carga
+        show: >
+            Vista de Carga
+        no_videos: >
+            Aún no hay cargas registrados la plataforma.
+        back_to_index: >
+            Volver a la lista de cargas
+    new:
+        title: >
+            Crear nueva carga
+
+    edit:
+        title: >
+            Editar carga

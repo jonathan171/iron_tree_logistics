@@ -1,0 +1,8 @@
+{% macro styleNotifications() %}
+     <link href="{{ asset('assets/libs/toastr/toastr.min.css') }}" rel="stylesheet">
+{% endmacro %}
+
+{% macro scriptNotifications() %}
+    <script src="{{ asset('assets/libs/toastr/toastr.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/toastr.init.js') }}"></script>
+{% endmacro %}

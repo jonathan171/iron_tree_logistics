@@ -1,0 +1,78 @@
+<div class="row">
+	<div class="col-md-12 col-xl-12">
+		{{ form_start(form) }}
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title mb-4">
+					{% if form.vars.data.id %}
+						{{ "loads.edit.title"|trans }}
+					{% else %}
+						{{ "loads.new.title"|trans }}
+					{% endif %}
+				</h4>
+
+				<div class="mb-3">
+					{{ form_label(form.fuel_surcharge, "loads.props.fuel_surcharge"|trans) }}
+					{{ form_widget(form.fuel_surcharge) }}
+				</div>
+				<div class="mb-3">
+					{{ form_label(form.well_name, "loads.props.well_name"|trans) }}
+					{{ form_widget(form.well_name) }}
+				</div>
+                <div class="mb-3">
+					{{ form_label(form.code, "loads.props.code"|trans) }}
+					{{ form_widget(form.code) }}
+				</div>
+                <div class="mb-3">
+					{{ form_label(form.driver_name, "loads.props.driver_name"|trans) }}
+					{{ form_widget(form.driver_name) }}
+				</div>
+                 <div class="mb-3">
+					{{ form_label(form.arrived_at_loader, "loads.props.arrived_at_loader"|trans) }}
+					{{ form_widget(form.arrived_at_loader) }}
+				</div>
+                 <div class="mb-3">
+					{{ form_label(form.loaded_distance, "loads.props.loaded_distance"|trans) }}
+					{{ form_widget(form.loaded_distance) }}
+				</div>
+                 <div class="mb-3">
+					{{ form_label(form.line_haul, "loads.props.line_haul"|trans) }}
+					{{ form_widget(form.line_haul) }}
+				</div>
+                <div class="mb-3">
+					{{ form_label(form.order_status, "loads.props.order_status"|trans) }}
+					{{ form_widget(form.order_status) }}
+				</div>
+                <div class="mb-3">
+					{{ form_label(form.billing_status, "loads.props.billing_status"|trans) }}
+					{{ form_widget(form.billing_status) }}
+				</div>
+                <div class="mb-3">
+					{{ form_label(form.trier, "loads.props.trier"|trans) }}
+					{{ form_widget(form.trier) }}
+				</div>
+				<div class="card-footer">
+					<button class="btn btn-success" type="submit">
+						<i class="fe fe-save"></i>
+
+						{% if form.vars.data.id %}
+							{{ "labels.update"|trans }}
+						{% else %}
+							{{ "labels.save"|trans }}
+						{% endif %}
+					</button>
+
+					<a href="{{ path('app_loads_index') }}" class="btn btn-primary">
+						<i class="fe fe-arrow-left"></i>
+						{{ "loads.index.back_to_index"|trans }}
+					</a>
+				</div>
+
+			</div>
+			<!-- end card body -->
+		</div>
+		{{ form_end(form) }}
+		<!-- end card -->
+	</div>
+	<!-- end col -->
+</div>

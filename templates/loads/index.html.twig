@@ -1,0 +1,160 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ "loads.index.title"|trans }}
+{% endblock %}
+
+{% import "macros/datatables.html.twig" as macrodatatable %}
+{% import "macros/notifications.html.twig" as notifications %}
+
+{% block stylesheets %}
+	{{ macrodatatable.styleDatatable}}
+	{{notifications.styleNotifications}}
+{% endblock %}
+
+{% block body %}
+
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+
+				<div class="card-body">
+					<div class="d-flex flex-wrap gap-2">
+						<a class="btn btn-warning waves-effect waves-light" href="{{ path('app_loads_excel_f5') }}"><i class="fas fa-file-excel"></i> Excel F5</a>
+					</div>
+					<h4 class="card-title">{{ "loads.index.title"|trans }}</h4>
+
+					<div class="card-options">
+						<a href="{{ path('app_loads_new') }}" class="btn btn-success">
+							<i class="fe fe-plus"></i>
+							{{ "loads.index.new"|trans }}
+						</a>
+					</div>
+					<p class="card-title-desc">{{ "loads.index.description"|trans }}
+
+					</p>
+
+					<table id="data_table_loads" class="table table-bordered dt-responsive  nowrap w-100">
+						<thead>
+							<tr>
+								<th>
+									{{"loads.props.code"|trans}}
+								</th>
+								<th>
+									{{"loads.props.driver_name"|trans}}
+								</th>
+								<th>
+									{{ "loads.props.arrived_at_loader"|trans }}
+								</th>
+								<th>
+									{{ "loads.props.trier"|trans }}
+								</th>
+								<th class="text-center">
+									{{ "loads.props.actions"|trans }}
+								</th>
+							</tr>
+						</thead>
+
+						<tbody></tbody>
+					</table>
+
+				</div>
+			</div>
+		</div>
+		<!-- end col -->
+	</div>
+	<div class="row mt-3">
+        <div class="col-md-12">
+            <pre id='toastrOptions' class="toastr-options"></pre>
+        </div>
+    </div>
+	<!-- end row -->
+
+{% endblock %}
+{% block javascripts %}
+
+
+	{{ macrodatatable.scriptDatatable}}
+	{{ notifications.scriptNotifications}}
+
+	<script>
+
+
+		$(document).ready(function () {
+
+			$('#data_table_loads').DataTable({
+				serverSide: true,
+				responsive: true,
+				pageLength: 50,
+				sPaginationType: "full_numbers",
+				language: {
+				"url": "https://cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+				},
+				ajax: {
+				"url": '/loads/table',
+				"type": "GET"
+				},
+				columns: [
+					{
+					data: 'code'
+					}, {
+					data: 'driverName'
+					}, {
+					data: 'arrivedAtLoader'
+					}, {
+					data: 'tier'
+					}, {
+					data: 'actions'
+					}
+				],
+				columnDefs: [],
+				order: [
+				[0, "desc"]
+				]
+				});
+
+				$('#data_table_loads tbody').on('change', '.form-select', function () {
+					
+					    $.ajax({
+							context: this,
+							url: '{{path('app_loads_save_tier')}}',
+							data: {
+							id: $(this).data('id'),
+							tier_id: $(this).val(),
+							},
+							type: 'POST',
+							dataType: 'json',
+							success: function (json) {
+							
+							
+							toastr.options = {
+								"closeButton": true,
+								"debug": false,
+								"newestOnTop": false,
+								"progressBar": false,
+								"positionClass": "toast-bottom-right",
+								"preventDuplicates": false,
+								"onclick": null,
+								"showDuration": 300,
+								"hideDuration": 1000,
+								"timeOut": 5000,
+								"extendedTimeOut": 1000,
+								"showEasing": "swing",
+								"hideEasing": "linear",
+								"showMethod": "fadeIn",
+								"hideMethod": "fadeOut"
+								}
+
+							Command: toastr["success"]("carga Actualizada Correctamente");
+
+							},
+							error: function (xhr, status) {
+							alert('Disculpe, existió un problema');
+							}
+							});
+				});
+    });
+		
+      
+	</script>
+{% endblock %}
