@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -41,6 +43,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $driver_name = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: UserCompany::class)]
+    private Collection $userCompanies;
+
+    public function __construct()
+    {
+        $this->userCompanies = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -168,5 +181,47 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __toString()
     {
         return $this->first_name;
+    }
+
+    public function getDriverName(): ?string
+    {
+        return $this->driver_name;
+    }
+
+    public function setDriverName(?string $driver_name): self
+    {
+        $this->driver_name = $driver_name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserCompany>
+     */
+    public function getUserCompanies(): Collection
+    {
+        return $this->userCompanies;
+    }
+
+    public function addUserCompany(UserCompany $userCompany): self
+    {
+        if (!$this->userCompanies->contains($userCompany)) {
+            $this->userCompanies->add($userCompany);
+            $userCompany->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserCompany(UserCompany $userCompany): self
+    {
+        if ($this->userCompanies->removeElement($userCompany)) {
+            // set the owning side to null (unless already changed)
+            if ($userCompany->getUser() === $this) {
+                $userCompany->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

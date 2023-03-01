@@ -99,7 +99,58 @@ loads:
     new:
         title: >
             Crear nueva carga
+    excel:
+        loads: >
+            Cargar
+        success: >
+             Vinculada Correctamente
+        
+    edit:
+        title: >
+            Editar carga
 
+# traduccion fuelTransactions
+fuelTransactions:
+    props:
+        yard_name: >
+            nombre del conductor
+        date: >
+            Fecha
+        paid_amount: >
+            valor Combustible
+        code: >
+            código Transacción
+        settlement_id: >
+            Liquidación
+        company: >
+            Transportadora
+        actions: >
+            Acciones
+    index:
+        title: >
+            Administración de Recargos de  Combustible
+        description: >
+            El módulo de administración de  Recargos de  Combustible permite gestionar los  Recargos de  Combustible de la plataforma.
+        new: >
+            Nuevo  Recargo de  Combustible
+        show: >
+            Vista de Recargo de  Combustible
+        no_fuel_transactions: >
+            Aún no hay Recargos de  Combustible registrados la plataforma.
+        back_to_index: >
+            Volver a la lista de Recargo de  Combustible
+    new:
+        title: >
+            Crear nuevo Recargo de  Combustible
+    excel:
+        fuelTransactions: >
+            Recargo de  Combustible
+        success: >
+             Vinculado Correctamente
+        title: >
+            Importación de Recargos
+        select_file: >
+            Seleccione el archivo
     edit:
         title: >
             Editar carga

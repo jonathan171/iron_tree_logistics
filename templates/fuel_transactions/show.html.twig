@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FuelTransactions{% endblock %}
+
+{% block body %}
+    <h1>FuelTransactions</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fuel_transaction.id }}</td>
+            </tr>
+            <tr>
+                <th>Yard_name</th>
+                <td>{{ fuel_transaction.yardName }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ fuel_transaction.date ? fuel_transaction.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Paid_amount</th>
+                <td>{{ fuel_transaction.paidAmount }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ fuel_transaction.code }}</td>
+            </tr>
+            <tr>
+                <th>Settlement_id</th>
+                <td>{{ fuel_transaction.settlementId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fuel_transactions_index') }}">back to list</a>
+
+    <a href="{{ path('app_fuel_transactions_edit', {'id': fuel_transaction.id}) }}">edit</a>
+
+    {{ include('fuel_transactions/_delete_form.html.twig') }}
+{% endblock %}

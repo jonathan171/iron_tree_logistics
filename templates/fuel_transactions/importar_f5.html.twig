@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
 
-{% block title %}excel F5
+{% block title %}{{ "fuelTransactions.excel.title"|trans }}
 {% endblock %}
 
 {% block body %}
-	<h1>Importar F5</h1>
+	<h1>{{ "fuelTransactions.excel.title"|trans }}</h1>
 <div class="row">
 	<div class="col-md-12 col-xl-12">
-		<form enctype="multipart/form-data" action="{{ path('app_loads_importar_excel_f5') }}" method="post" id="form-importar-loads">
+		<form enctype="multipart/form-data" action="{{ path('app_fuel_transactions_importar_excel_f5') }}" method="post" id="form-importar-loads">
 
 			<div class="mb-3">
-				<label class="col-sm-3 text-end control-label col-form-label">Seleccione el archivo de excel ...</label>
+				<label class="col-sm-3 text-end control-label col-form-label"> {{ "fuelTransactions.excel.select_file"|trans }}  ...</label>
 				
 					<input type="file" id="archivo_excel" name="archivo_excel"/>
 			
@@ -33,7 +33,7 @@
 			<div class="alert alert-success alert-dismissible fade show" role="alert">
 				<ul>
 					
-						<li>{{ "loads.excel.loads"|trans }} {{data['excel_data']['code']}} {{ "loads.excel.success"|trans }}</li>
+						<li>{{ "fuelTransactions.excel.fuelTransactions"|trans }} {{data['excel_data']['code']}} {{ "fuelTransactions.excel.success"|trans }}</li>
 					           
              	</ul>
 			</div>
@@ -43,7 +43,7 @@
 					{% for alert in data['messages'] %}  
 						<li>{{alert}}</li>
 					{% endfor %}  
-					<li>Carga: {{data['excel_data']['code']}}</li>
+					<li>{{ "fuelTransactions.excel.fuelTransactions"|trans }}: {{data['excel_data']['code']}}</li>
 							          
              </ul>
 			</div>
@@ -53,7 +53,7 @@
                 {% for alert in data['messages'] %}  
 					 <li>{{alert}}</li>
 				{% endfor %}        
-				<li>Carga: {{data['excel_data']['code']}}</li>          
+				<li>{{ "fuelTransactions.excel.fuelTransactions"|trans }}: {{data['excel_data']['code']}}</li>          
 			    
              </ul>
 			 <pre>

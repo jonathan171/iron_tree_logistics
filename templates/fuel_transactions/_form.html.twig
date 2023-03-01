@@ -1,0 +1,63 @@
+<div class="row">
+	<div class="col-md-12 col-xl-12">
+		{{ form_start(form) }}
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title mb-4">
+					{% if form.vars.data.id %}
+						{{ "fuelTransactions.edit.title"|trans }}
+					{% else %}
+						{{ "fuelTransactions.new.title"|trans }}
+					{% endif %}
+				</h4>
+
+				<div class="mb-3">
+					{{ form_label(form.yard_name, "fuelTransactions.props.yard_name"|trans) }}
+					{{ form_widget(form.yard_name) }}
+				</div>
+                <div class="mb-3">
+					{{ form_label(form.date, "fuelTransactions.props.date"|trans) }}
+					{{ form_widget(form.date) }}
+				</div>
+                <div class="mb-3">
+					{{ form_label(form.paid_amount, "fuelTransactions.props.paid_amount"|trans) }}
+					{{ form_widget(form.paid_amount) }}
+				</div>
+                <div class="mb-3">
+					{{ form_label(form.code, "fuelTransactions.props.code"|trans) }}
+					{{ form_widget(form.code) }}
+				</div>
+                <div class="mb-3">
+					{{ form_label(form.settlement_id, "fuelTransactions.props.settlement_id"|trans) }}
+					{{ form_widget(form.settlement_id) }}
+				</div>
+                <div class="mb-3">
+					{{ form_label(form.company, "fuelTransactions.props.company"|trans) }}
+					{{ form_widget(form.company) }}
+				</div>
+				
+				<div class="card-footer">
+					<button class="btn btn-success" type="submit">
+						<i class="fe fe-save"></i>
+
+						{% if form.vars.data.id %}
+							{{ "labels.update"|trans }}
+						{% else %}
+							{{ "labels.save"|trans }}
+						{% endif %}
+					</button>
+
+					<a href="{{ path('app_fuel_transactions_index') }}" class="btn btn-primary">
+						<i class="fe fe-arrow-left"></i>
+						{{ "fuelTransactions.index.back_to_index"|trans }}
+					</a>
+				</div>
+
+			</div>
+			<!-- end card body -->
+		</div>
+		{{ form_end(form) }}
+		<!-- end card -->
+	</div>
+	<!-- end col -->
+</div>

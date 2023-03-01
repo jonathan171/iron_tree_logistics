@@ -47,6 +47,10 @@ class Loads
     #[ORM\Column(length: 255)]
     private ?string $dispatched_loader = null;
 
+    #[ORM\ManyToOne(inversedBy: 'loads')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Company $company = null;
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -180,6 +184,18 @@ class Loads
     public function setDispatchedLoader(string $dispatched_loader): self
     {
         $this->dispatched_loader = $dispatched_loader;
+
+        return $this;
+    }
+
+    public function getCompany(): ?Company
+    {
+        return $this->company;
+    }
+
+    public function setCompany(?Company $company): self
+    {
+        $this->company = $company;
 
         return $this;
     }

@@ -80,6 +80,11 @@ class LoadsType extends AbstractType
                     'class' => 'form-control',
                 ]
             ])
+            ->add('company',null, [
+                'attr' => [
+                    'class' => 'form-control',
+                ]
+            ])
         ;
     }
 

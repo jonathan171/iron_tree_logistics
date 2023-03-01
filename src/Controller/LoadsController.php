@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Company;
 use App\Entity\Loads;
 use App\Entity\Trier;
 use App\Form\LoadsType;
@@ -248,6 +249,9 @@ class LoadsController extends AbstractController
             $load->setLineHaul($_rowData["line_haul"]);
             $load->setOrderStatus($_rowData["order_status"]);
             $load->setBillingStatus($_rowData["billing_status"]);
+
+            $company= $this->manager->getRepository(Company::class)->find(1);
+            $load->setCompany($company);
 
             $this->manager->persist( $load);
             $this->manager->flush();

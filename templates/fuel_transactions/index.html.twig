@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ "fuelTransactions.index.title"|trans }}
+{% endblock %}
+
+{% import "macros/datatables.html.twig" as macrodatatable %}
+{% import "macros/notifications.html.twig" as notifications %}
+
+{% block stylesheets %}
+	{{ macrodatatable.styleDatatable}}
+	{{notifications.styleNotifications}}
+{% endblock %}
+
+{% block body %}
+
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+
+				<div class="card-body">
+					<div class="d-flex flex-wrap gap-2">
+						<a class="btn btn-warning waves-effect waves-light" href="{{ path('app_fuel_transactions_excel_f5') }}"><i class="fas fa-file-excel"></i> Excel 5F</a>
+					</div>
+					<h4 class="card-title">{{ "fuelTransactions.index.title"|trans }}</h4>
+
+					<div class="card-options">
+						<a href="{{ path('app_fuel_transactions_new') }}" class="btn btn-success">
+							<i class="fe fe-plus"></i>
+							{{ "fuelTransactions.index.new"|trans }}
+						</a>
+					</div>
+					<p class="card-title-desc">{{ "fuelTransactions.index.description"|trans }}
+
+					</p>
+
+					<table id="data_table_fuel_transactions" class="table table-bordered dt-responsive  nowrap w-100">
+						<thead>
+							<tr>
+								<th>
+									{{"fuelTransactions.props.code"|trans}}
+								</th>
+								<th>
+									{{"fuelTransactions.props.yard_name"|trans}}
+								</th>
+								<th>
+									{{ "fuelTransactionss.props.date"|trans }}
+								</th>
+								
+								<th class="text-center">
+									{{ "fuelTransactions.props.actions"|trans }}
+								</th>
+							</tr>
+						</thead>
+
+						<tbody></tbody>
+					</table>
+
+				</div>
+			</div>
+		</div>
+		<!-- end col -->
+	</div>
+	<div class="row mt-3">
+        <div class="col-md-12">
+            <pre id='toastrOptions' class="toastr-options"></pre>
+        </div>
+    </div>
+	<!-- end row -->
+
+{% endblock %}
+{% block javascripts %}
+
+
+	{{ macrodatatable.scriptDatatable}}
+	{{ notifications.scriptNotifications}}
+
+	<script>
+
+
+		$(document).ready(function () {
+
+			$('#data_table_fuel_transactions').DataTable({
+				serverSide: true,
+				responsive: true,
+				pageLength: 50,
+				sPaginationType: "full_numbers",
+				language: {
+				"url": "https://cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+				},
+				ajax: {
+				"url": '{{ path('app_fuel_transactions_table') }}',
+				"type": "GET"
+				},
+				columns: [
+					{
+					data: 'code'
+					}, {
+					data: 'yard_name'
+					}, {
+					data: 'date'
+					}, {
+					data: 'actions'
+					}
+				],
+				columnDefs: [],
+				order: [
+				[0, "desc"]
+				]
+				});
+    });
+		
+      
+	</script>
+{% endblock %}
