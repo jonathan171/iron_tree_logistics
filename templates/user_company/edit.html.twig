@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ "userCompany.edit.title"|trans }}{% endblock %}
+
+{% block body %}
+
+    {{ include('user_company/_form.html.twig', {'button_label': 'Update'}) }}
+
+{% endblock %}

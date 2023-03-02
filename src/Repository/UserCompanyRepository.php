@@ -2,8 +2,12 @@
 
 namespace App\Repository;
 
+use App\Entity\Company;
+use App\Entity\User;
 use App\Entity\UserCompany;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr\Join;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -39,28 +43,52 @@ class UserCompanyRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return UserCompany[] Returns an array of UserCompany objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('u')
-//            ->andWhere('u.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('u.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function findByDataTable(array $options = [])
+    {
 
-//    public function findOneBySomeField($value): ?UserCompany
-//    {
-//        return $this->createQueryBuilder('u')
-//            ->andWhere('u.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        $currentPage = isset($options['page']) ? $options['page'] : 0;
+        $pageSize = isset($options['pageSize']) ? $options['pageSize'] : 10;
+
+        $query = $this->createQueryBuilder('f')
+                    ->innerJoin(User::class, 'u',Join::WITH, 'f.user = u.id')
+                    ->innerJoin(Company::class,'c',Join::WITH,'f.company = c.id');
+        if ($options['search']) {
+            $shearch = '%' . $options['search'] . '%';
+            $query->andWhere('f.discount like :val  OR u.first_name like :val  OR u.last_name like :val OR c.name like :val')
+                ->setParameter('val', $shearch);
+        }
+
+        $query->getQuery();
+        $paginator = new Paginator($query);
+        $totalItems = $paginator->count();
+        $paginator->getQuery()->setFirstResult($pageSize * $currentPage)->setMaxResults($pageSize)->getResult();
+        $list = [];
+
+
+        foreach ($paginator as $item) {
+
+            $actions = '<a  class="btn waves-effect waves-light btn-info" href="/user_company/' . $item->getId() . '/edit">editar</a>';
+
+
+
+            $list[] = [
+                'user' => $item->getUser()->getFirstName().' '.$item->getUser()->getLastName(),
+                'company' => $item->getCompany()->getName(),
+                'discount' => $item->getDiscount(),
+                'actions' => $actions
+            ];
+            // echo $item->getZona()->getNombre();
+        }
+        return ['data' => $list, 'totalRecords' => $totalItems];
+    }
+
+    //    public function findOneBySomeField($value): ?UserCompany
+    //    {
+    //        return $this->createQueryBuilder('u')
+    //            ->andWhere('u.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

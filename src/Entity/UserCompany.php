@@ -18,7 +18,7 @@ class UserCompany
     private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'userCompanies')]
-    private ?company $company = null;
+    private ?Company $company = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 20, scale: 2)]
     private ?string $discount = null;
@@ -40,12 +40,12 @@ class UserCompany
         return $this;
     }
 
-    public function getCompany(): ?company
+    public function getCompany(): ?Company
     {
         return $this->company;
     }
 
-    public function setCompany(?company $company): self
+    public function setCompany(?Company $company): self
     {
         $this->company = $company;
 

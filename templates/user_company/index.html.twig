@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ "fuelTransactions.index.title"|trans }}
+{% endblock %}
+
+{% import "macros/datatables.html.twig" as macrodatatable %}
+{% import "macros/notifications.html.twig" as notifications %}
+
+{% block stylesheets %}
+	{{ macrodatatable.styleDatatable}}
+	{{notifications.styleNotifications}}
+{% endblock %}
+
+{% block body %}
+
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+
+				<div class="card-body">
+					
+					<h4 class="card-title">{{ "userCompany.index.title"|trans }}</h4>
+
+					<div class="card-options">
+						<a href="{{ path('app_user_company_new') }}" class="btn btn-success">
+							<i class="fe fe-plus"></i>
+							{{ "userCompany.index.new"|trans }}
+						</a>
+					</div>
+					<p class="card-title-desc">{{ "userCompany.index.description"|trans }}
+
+					</p>
+
+					<table id="data_table_user_company" class="table table-bordered dt-responsive  nowrap w-100">
+						<thead>
+							<tr>
+								<th>
+									{{"userCompany.props.user"|trans}}
+								</th>
+								<th>
+									{{"userCompany.props.company"|trans}}
+								</th>
+								<th>
+									{{ "userCompany.props.discount"|trans }}
+								</th>
+								
+								<th class="text-center">
+									{{ "userCompany.props.actions"|trans }}
+								</th>
+							</tr>
+						</thead>
+
+						<tbody></tbody>
+					</table>
+
+				</div>
+			</div>
+		</div>
+		<!-- end col -->
+	</div>
+	<div class="row mt-3">
+        <div class="col-md-12">
+            <pre id='toastrOptions' class="toastr-options"></pre>
+        </div>
+    </div>
+	<!-- end row -->
+
+{% endblock %}
+{% block javascripts %}
+
+
+	{{ macrodatatable.scriptDatatable}}
+	{{ notifications.scriptNotifications}}
+
+	<script>
+
+
+		$(document).ready(function () {
+
+			$('#data_table_user_company').DataTable({
+				serverSide: true,
+				responsive: true,
+				pageLength: 50,
+				sPaginationType: "full_numbers",
+				language: {
+				"url": "https://cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+				},
+				ajax: {
+				"url": '{{ path('app_user_company_table') }}',
+				"type": "GET"
+				},
+				columns: [
+					{
+					data: 'user'
+					}, {
+					data: 'company'
+					}, {
+					data: 'discount'
+					}, {
+					data: 'actions'
+					}
+				],
+				columnDefs: [],
+				order: [
+				[0, "desc"]
+				]
+				});
+    });
+		
+      
+	</script>
+{% endblock %}

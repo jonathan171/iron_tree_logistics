@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}UserCompany{% endblock %}
+
+{% block body %}
+    <h1>UserCompany</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user_company.id }}</td>
+            </tr>
+            <tr>
+                <th>Discount</th>
+                <td>{{ user_company.discount }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_user_company_index') }}">back to list</a>
+
+    <a href="{{ path('app_user_company_edit', {'id': user_company.id}) }}">edit</a>
+
+    {{ include('user_company/_delete_form.html.twig') }}
+{% endblock %}

@@ -154,3 +154,34 @@ fuelTransactions:
     edit:
         title: >
             Editar carga
+
+# traduccion userCompany
+userCompany:
+    props:
+        user: >
+            Conductor
+        company: >
+            Transportadora
+        discount: >
+            Descuento
+        actions: >
+            Acciones
+    index:
+        title: >
+            Administración de Conductores por Transportadora
+        description: >
+            El módulo de administración de  Conductores por Transportadora permite vincular cada conductor a una transportadora y el descuento que se le aplicara con esa transportadora.
+        new: >
+            Nuevo  Conductor por Transportadora
+        show: >
+            Vista de Conductor por Transportadora
+        no_usuario_company: >
+            Aún no hay Conductor por Transportadora registrados la plataforma.
+        back_to_index: >
+            Volver a la lista de Conductor por Transportadora
+    new:
+        title: >
+            Crear nuevo Conductor por Transportadora
+    edit:
+        title: >
+            Editar Conductor por Transportadora
