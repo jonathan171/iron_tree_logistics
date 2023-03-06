@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{% import "macros/select2.html.twig" as macroselect2 %}
+
+{% block title %}
+	{{ "settlement.index.title"|trans }}
+{% endblock %}
+
+{% block stylesheets %}
+	{{ macroselect2.styleSelect2}}
+	
+{% endblock %}
+
+{% block body %}
+	<div class="row">
+		<div class="col-md-12 col-xl-12">
+			<form action="{{ path('app_settlement_pdf') }}" method="post">
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title mb-4">
+							{{ "settlement.index.title"|trans }}
+						</h4>
+
+						<div class="mb-3">
+							<label>{{"settlement.props.fecha_in"|trans}}</label>
+							<input class="form-control" id="fecha_inicio" type="date" name="fecha_inicio">
+						</div>
+						<div class="mb-3">
+							<label>{{"settlement.props.fecha_fin"|trans}}</label>
+							<input class="form-control" id="fecha_fin" type="date" name="fecha_fin">
+						</div>
+						<div class="mb-3">
+						<label>{{"settlement.props.driver"|trans}}</label>
+						 <select class="form-control" id="input-buscador-user" name="user"></select>
+						</div>
+						<div class="mb-3">
+							<label>{{"settlement.props.company"|trans}}</label>
+							<select class="form-control" name="company">
+								{% for company in companys %}
+									<option value="{{company.id}}">{{company.name}}</option>
+								{% endfor %}
+							</select>
+						</div>
+						<div class="card-footer">
+							<button class="btn btn-success" type="submit">
+								<i class="fe fe-save"></i>
+								{{ "labels.save"|trans }}
+							</button>
+						</div>
+
+					</div>
+					<!-- end card body -->
+				</div>
+			</form>
+			<!-- end card -->
+		</div>
+		<!-- end col -->
+	</div>
+
+{% endblock %}
+{% block javascripts %}
+ {{ macroselect2.scriptSelect2}}
+<script>
+ function pad(n, width, z) { z = z || '0'; n = n + ''; return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n; }
+
+    function formatResult (item) {
+            
+
+            var html = [
+                '<div>',
+                    item.text ,
+                '</div>'
+            ];
+
+            var $state = $(html.join(""));
+
+            return $state;
+        };
+    
+
+       var currentQuery = "";
+
+        $("#input-buscador-user").select2({
+            width: '100%',
+             //theme: "bootstrap4",
+             minimumInputLength: 2,
+             delay: 200,
+             placeholder: "Ingrese un término de búsqueda aquí p. ej. email",
+            ajax: {
+                url: '/user/buscadorAjaxUser',
+                dataType: 'json'
+            },
+            templateResult: formatResult
+        }).on('select2:select', function (e) {
+            var data = e.params.data;
+            
+            $('#input-buscador-user').val(data.id);
+            $('#lbluser').html(data.text);
+            
+        }).on('select2:open', function() {
+            $('.select2-search input').focus().val(currentQuery).trigger('input');
+        }).on('select2:closing', function() {
+            currentQuery = $('.select2-search input').prop('value');
+        });
+    
+    </script>
+	{% endblock %}

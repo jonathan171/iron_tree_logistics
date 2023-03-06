@@ -1,0 +1,63 @@
+<table>
+
+	<tr>
+
+		<td><img src="{{ asset('assets/images/logo-dark.png')}}" alt="user" width="200"></td>
+		<td style="text-align:center;">
+			<b>{{driver.firstName}}{{driver.lastName}}</b>
+			<br>
+			10444 Nolan Dr.
+
+
+		</td>
+		<td style="text-align:left;">
+			<b>
+				TRUCK # 7778
+			</b>
+			<br>
+			<b>Payment Remittence</b>
+
+			<hr>
+			Pay period:
+			{{fecha_inicio}}
+			to
+			{{fecha_fin}}
+
+			<br>
+		</td>
+	</tr>
+
+</table>
+<br>
+<table border="1">
+<tr>
+<th>N°</th>
+<th>Date</th>
+<th>Load No./Settlement </th>
+<th>Driver</th>
+<th>Ticket No./ BOL</th>
+<th>From</th>
+<th>To</th>
+<th>Mileage</th>
+<th>Line Haul</th>
+<th>Fuel Surcharge</th>
+<th>Tier</th>
+<th>Sub-Total</th>
+</tr>
+{% for load in loads %}
+<tr>
+<th>{{ loop.index }}</th>
+<th>{{ load.arrivedAtLoader ? load.arrivedAtLoader|date('Y-m-d') : '' }}</th>
+<th>{{ load.arrivedAtLoader}} </th>
+<th>Driver</th>
+<th>Ticket No./ BOL</th>
+<th>From</th>
+<th>To</th>
+<th>Mileage</th>
+<th>Line Haul</th>
+<th>Fuel Surcharge</th>
+<th>Tier</th>
+<th>Sub-Total</th>
+</tr>
+{% endfor %}
+</table>

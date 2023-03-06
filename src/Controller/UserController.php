@@ -130,4 +130,32 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/buscadorAjaxUser', name: 'app_user_buscador_ajax_user', methods: ['GET', 'POST'])]
+    public function executeBuscadorAjaxUser(
+        Request $request,
+        UserRepository $userRepository
+    ) {
+        $busqueda = $request->query->get('term');
+        $start = 0;
+        $length = 20;
+
+
+        $data_table  = $userRepository->findByDataShearch([
+            'page' => ($start / $length),
+            'pageSize' =>  $length,
+            'search' =>  $busqueda
+        ]);
+
+
+        $responseData = array(
+            "results" => $data_table['data'],
+            "pagination" => array(
+                // Determinar si hay mas paginas disponibles
+                "more" => (false)
+            )
+        );
+        return $this->json($responseData);
+    }
+
 }

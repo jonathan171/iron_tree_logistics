@@ -46,6 +46,10 @@ class UserType extends AbstractType
         ])->add('active', CheckboxType::class, [
             'required'=> false
         ])->add('isVerified',null, [
+        ])->add('driver_name', null, [
+            'attr' => [
+                'class' => 'form-control',
+            ]
         ]);
     }
 

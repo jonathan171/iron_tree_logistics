@@ -35,6 +35,8 @@ user:
             Activo
         isVerified: >
             correo verificado
+        driver_name: >
+            Nombre Conductor
         actions: >
             Acciones
     index:
@@ -185,3 +187,16 @@ userCompany:
     edit:
         title: >
             Editar Conductor por Transportadora
+
+# traduccion settlement
+settlement:
+    props:
+        fecha_in: >
+           Fecha Inicial
+        fecha_fin: >
+            Fecha Fin
+        company: >
+            Transportadora
+    index:
+        title: >
+            Desprendible de Nómina
