@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LoadsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -50,6 +52,17 @@ class Loads
     #[ORM\ManyToOne(inversedBy: 'loads')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Company $company = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $bol = null;
+
+    #[ORM\OneToMany(mappedBy: 'loads', targetEntity: LoadDeductions::class)]
+    private Collection $loadDeductions;
+
+    public function __construct()
+    {
+        $this->loadDeductions = new ArrayCollection();
+    }
     
     public function getId(): ?int
     {
@@ -196,6 +209,48 @@ class Loads
     public function setCompany(?Company $company): self
     {
         $this->company = $company;
+
+        return $this;
+    }
+
+    public function getBol(): ?string
+    {
+        return $this->bol;
+    }
+
+    public function setBol(?string $bol): self
+    {
+        $this->bol = $bol;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, LoadDeductions>
+     */
+    public function getLoadDeductions(): Collection
+    {
+        return $this->loadDeductions;
+    }
+
+    public function addLoadDeduction(LoadDeductions $loadDeduction): self
+    {
+        if (!$this->loadDeductions->contains($loadDeduction)) {
+            $this->loadDeductions->add($loadDeduction);
+            $loadDeduction->setLoads($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLoadDeduction(LoadDeductions $loadDeduction): self
+    {
+        if ($this->loadDeductions->removeElement($loadDeduction)) {
+            // set the owning side to null (unless already changed)
+            if ($loadDeduction->getLoads() === $this) {
+                $loadDeduction->setLoads(null);
+            }
+        }
 
         return $this;
     }

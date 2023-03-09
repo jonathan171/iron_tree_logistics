@@ -74,6 +74,10 @@ class LoadsRepository extends ServiceEntityRepository
 
             $actions= '<a  class="btn waves-effect waves-light btn-info" href="/loads/'.$item->getId().'/edit">editar</a>';
 
+            $actions.='<a class="icon-select"  style="position:relative; float:right;cursor:pointer;" onclick="deductions('.$item->getId().');"  title="deductions">
+            <i class="fa fa-eye text-success" ></i>
+             </a>';
+
             $select ='<select class="form-select" data-id="'.$item->getId().'">';
             $select .='<option value= ""> </option>';
 

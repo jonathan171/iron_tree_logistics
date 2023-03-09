@@ -83,6 +83,8 @@ loads:
             estado de factura
         trier: >
             Nivel
+        company: >
+            Transportadora
         actions: >
             Acciones
     index:
@@ -166,6 +168,8 @@ userCompany:
             Transportadora
         discount: >
             Descuento
+        truck: >
+            Camión
         actions: >
             Acciones
     index:
@@ -197,6 +201,27 @@ settlement:
             Fecha Fin
         company: >
             Transportadora
+        new_deductions: >
+            Agregar Deducción
+        deductions_name: >
+            nombre
+        deductions_value: >
+            Monto
+
     index:
         title: >
             Desprendible de Nómina
+
+# traduccion loadDeductions
+loadDeductions:
+    props:
+        description: >
+           descripción
+        amount: >
+            valor
+        loads: >
+            Carga
+    index:
+        title: >
+           Deducciones 
+

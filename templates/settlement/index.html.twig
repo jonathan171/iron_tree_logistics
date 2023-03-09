@@ -14,7 +14,7 @@
 {% block body %}
 	<div class="row">
 		<div class="col-md-12 col-xl-12">
-			<form action="{{ path('app_settlement_pdf') }}" method="post">
+			<form action="{{ path('app_settlement_pdf') }}" method="post" id="setlement">
 				<div class="card">
 					<div class="card-body">
 						<h4 class="card-title mb-4">
@@ -23,15 +23,15 @@
 
 						<div class="mb-3">
 							<label>{{"settlement.props.fecha_in"|trans}}</label>
-							<input class="form-control" id="fecha_inicio" type="date" name="fecha_inicio">
+							<input class="form-control" id="fecha_inicio" type="date" name="fecha_inicio" required="required">
 						</div>
 						<div class="mb-3">
 							<label>{{"settlement.props.fecha_fin"|trans}}</label>
-							<input class="form-control" id="fecha_fin" type="date" name="fecha_fin">
+							<input class="form-control" id="fecha_fin" type="date" name="fecha_fin" required="required">
 						</div>
 						<div class="mb-3">
 						<label>{{"settlement.props.driver"|trans}}</label>
-						 <select class="form-control" id="input-buscador-user" name="user"></select>
+						 <select class="form-control" id="input-buscador-user" name="user" required="required"></select>
 						</div>
 						<div class="mb-3">
 							<label>{{"settlement.props.company"|trans}}</label>
@@ -40,6 +40,20 @@
 									<option value="{{company.id}}">{{company.name}}</option>
 								{% endfor %}
 							</select>
+						</div>
+						<div class="mb-3">
+							<label>{{"settlement.props.new_deductions"|trans}}</label>
+							<input  id="new_deductions" type="checkbox" name="new_deductions">
+						</div>
+						<div id="datos_deductions" style="display:none;">
+							<div class="mb-3">
+								<label>{{"settlement.props.deductions_name"|trans}}</label>
+								<input class="form-control"  id="deductions_name" type="text" name="deductions_name">
+							</div>
+							<div class="mb-3">
+								<label>{{"settlement.props.deductions_value"|trans}}</label>
+								<input class="form-control" id="deductions_value" type="number" name="deductions_value">
+							</div>
 						</div>
 						<div class="card-footer">
 							<button class="btn btn-success" type="submit">
@@ -103,5 +117,39 @@
             currentQuery = $('.select2-search input').prop('value');
         });
     
+
+	
+$("#setlement").submit(function(e) {
+    
+    if($('#new_deductions').is(":checked")){
+		if($("#deductions_name").val()==''|| $("#deductions_name").val()==null){
+			e.preventDefault();    
+			alert('Por favor ingresa un nombre para la deduccioón');
+			return false;
+		}
+		if($("#deductions_value").val()==''|| $("#deductions_value").val()==null){
+			e.preventDefault();    
+			alert('Por favor ingresa un valor para la deduccioón');
+			return false;
+		}
+		
+	}
+});
+
+ $('#new_deductions').change(function (){
+        
+        if($('#new_deductions').is(":checked")){
+            
+            $('#datos_deductions').show();
+        }else{
+            
+            $('#datos_deductions').hide();
+        }
+        
+});
+
+ $(document).on('select2:open', () => {
+        document.querySelector('.select2-search__field').focus();
+});
     </script>
 	{% endblock %}

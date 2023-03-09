@@ -29,35 +29,163 @@
 
 </table>
 <br>
-<table border="1">
-<tr>
-<th>N°</th>
-<th>Date</th>
-<th>Load No./Settlement </th>
-<th>Driver</th>
-<th>Ticket No./ BOL</th>
-<th>From</th>
-<th>To</th>
-<th>Mileage</th>
-<th>Line Haul</th>
-<th>Fuel Surcharge</th>
-<th>Tier</th>
-<th>Sub-Total</th>
-</tr>
-{% for load in loads %}
-<tr>
-<th>{{ loop.index }}</th>
-<th>{{ load.arrivedAtLoader ? load.arrivedAtLoader|date('Y-m-d') : '' }}</th>
-<th>{{ load.code}} </th>
-<th>Driver</th>
-<th>Ticket No./ BOL</th>
-<th>From</th>
-<th>To</th>
-<th>Mileage</th>
-<th>Line Haul</th>
-<th>Fuel Surcharge</th>
-<th>Tier</th>
-<th>Sub-Total</th>
-</tr>
-{% endfor %}
+<table border="1" style="text-align:center">
+	<tr>
+		<th style="width:5%;">N°</th>
+		<th style="width:7%;">Date</th>
+		<th style="width:8%;">Load No./Settlement
+		</th>
+		<th style="width:8%;">Driver</th>
+		<th style="width:8%;">Ticket No./ BOL</th>
+		<th style="width:12%;">From</th>
+		<th style="width:15%;">To</th>
+		<th style="width:5%;">Mileage</th>
+		<th style="width:8%;">Line Haul</th>
+		<th style="width:8%;">Fuel Surcharge</th>
+		<th style="width:8%;">Tier</th>
+		<th style="width:8%;">Sub-Total</th>
+	</tr>
+	{% set total_loads = 0 %}
+	{% for load in loads %}
+		<tr>
+			<td>
+				{{ loop.index }}</td>
+			<td>
+				{{ load.arrivedAtLoader ? load.arrivedAtLoader|date('Y-m-d') : '' }}</td>
+			<td>
+				{{ load.code}}</td>
+			<td>
+				{{load.driverName}}</td>
+			<td>
+				{{load.bol}}</td>
+			<td>
+				{{load.dispatchedLoader}}</td>
+			<td>
+				{{ load.wellName|length > 30 ? load.wellName|slice(0, 27) ~ '...' : load.wellName }}</td>
+			<td>
+				{{load.loadedDistance}}</td>
+			<td>
+				${{load.lineHaul}}</td>
+			<td>
+				${{load.fuelSurcharge}}</td>
+			{% set base = load.lineHaul + load.fuelSurcharge %}
+
+			{% if load.trier %}
+				{% set descuento = (base - (base * (load.trier.percentage / 100))) %}
+			{% else %}
+				{% set descuento = 0 %}
+
+			{% endif %}
+			<td>- ${{descuento}}</td>
+			{% set total_load =  base - descuento %}
+			<td>{{total_load}}</td>
+		</tr>
+		{% set total_loads = total_loads + total_load %}
+	{% endfor %}
+	<tr>
+		<td colspan="9"></td>
+		<td colspan="2">
+			<b>LOADS TOTAL</b>
+		</td>
+		<td>${{total_loads|number_format(2, '.', ',')}}</td>
+	</tr>
+</table>
+<br>
+<br>
+<table style=" text-align:center;">
+	<tr>
+		<td style="width:34%; ">
+			<table border="1" style="text-align:center; width:80%;">
+				<tr>
+					<td colspan="2">
+						<b>FUEL</b>
+					</td>
+				</tr>
+				{% set total_fuel = 0 %}
+				{% for fuel in fuels %}
+					<tr>
+						<td>
+							<b>{{fuel.date ? fuel.date|date('Y-m-d') : '' }}</b>
+						</td>
+						<td>${{fuel.paidAmount}}</td>
+					</tr>
+					{% set total_fuel = total_fuel + fuel.paidAmount %}
+				{% endfor %}
+				<tr>
+					<td></td>
+					<td>${{total_fuel|number_format(2, '.', ',')}}
+					</td>
+				</tr>
+			</table>
+		</td>
+		{% set itl = total_loads * (discount.discount / 100) %}
+		{% set total_deductions = 0 %}
+		<td style="width:33%">
+			<table border="1" style="text-align:center; width:80%;">
+				<tr>
+					<td colspan="2">
+						<b>Destuctions</b>
+					</td>
+				</tr>
+				<tr>
+					<td>Fuel</td>
+					<td>${{total_fuel|number_format(2, '.', ',')}}</td>
+				</tr>
+				{% set total_deductions = total_deductions + total_fuel %}
+				<tr>
+					<td>Chasis</td>
+					<td>${{total_deduction|number_format(2, '.', ',')}}</td>
+				</tr>
+				{% set total_deductions = total_deductions + total_deduction %}
+				{% if new_deductions %}
+				<tr>
+					<td>{{name}}</td>
+					<td>${{value|number_format(2, '.', ',')}}</td>
+				</tr>
+				{% set total_deductions = total_deductions + value %}
+				{% endif %}
+				<tr>
+					<td>% ITL</td>
+					<td>${{itl|number_format(2, '.', ',')}}</td>
+					{% set total_deductions = total_deductions + itl %}
+				</tr>
+				<tr>
+					<td>
+						<b>Total</b>
+					</td>
+					<td>${{(total_deductions)|number_format(2, '.', ',')}}</td>
+				</tr>
+			</table>
+		</td>
+		<td style="width:33%; font-size:16px;">
+			<table>
+				<tr>
+					<td>
+						<b>Subtotal</b>
+					</td>
+					<td>${{total_loads|number_format(2, '.', ',')}}</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>
+						<b>Deductions</b>
+					</td>
+					<td style="color: red;">${{total_deductions|number_format(2, '.', ',')}}</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>
+						<b>Pay Total</b>
+					</td>
+					<td >${{ (total_loads - (total_deductions))|number_format(2, '.', ',')}}</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
 </table>

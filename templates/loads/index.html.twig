@@ -68,6 +68,18 @@
             <pre id='toastrOptions' class="toastr-options"></pre>
         </div>
     </div>
+
+	<div id="showDeductions" title='{{ "loadDeductions.index.title"|trans }}' style="display:none;width:800px;height:500px;" >
+
+    <div class="input-group">
+    </div>
+
+    <div id="divDeductions" >
+    </div>
+
+</div>  
+
+
 	<!-- end row -->
 
 {% endblock %}
@@ -153,8 +165,22 @@
 							}
 							});
 				});
+
+	
+
     });
 		
-      
+        
+    function deductions(idLoads) {
+
+        ParaEnvio = '/loads/'+idLoads+'/deductions';
+
+
+        $('#divDeductions').load(ParaEnvio, {});
+
+        $("#showDeductions").dialog({ width: 800, height: 500});
+
+    }
+
 	</script>
 {% endblock %}

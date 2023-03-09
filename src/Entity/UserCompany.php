@@ -23,6 +23,9 @@ class UserCompany
     #[ORM\Column(type: Types::DECIMAL, precision: 20, scale: 2)]
     private ?string $discount = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $truck = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class UserCompany
     public function setDiscount(string $discount): self
     {
         $this->discount = $discount;
+
+        return $this;
+    }
+
+    public function getTruck(): ?string
+    {
+        return $this->truck;
+    }
+
+    public function setTruck(?string $truck): self
+    {
+        $this->truck = $truck;
 
         return $this;
     }

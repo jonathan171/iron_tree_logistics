@@ -30,6 +30,11 @@ class UserCompanyType extends AbstractType
                     'class' => 'form-control',
                 ]
             ])
+            ->add('truck',null, [
+                'attr' => [
+                    'class' => 'form-control',
+                ]
+            ])
         ;
     }
 
