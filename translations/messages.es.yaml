@@ -199,6 +199,8 @@ settlement:
            Fecha Inicial
         fecha_fin: >
             Fecha Fin
+        driver: >
+            Conductor
         company: >
             Transportadora
         new_deductions: >
