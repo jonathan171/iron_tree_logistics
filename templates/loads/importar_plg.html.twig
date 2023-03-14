@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}{{ "fuelTransactions.excel.title"|trans }}
+{% endblock %}
+
+{% block body %}
+	<h1>{{ "fuelTransactions.excel.title"|trans }}</h1>
+<div class="row">
+	<div class="col-md-12 col-xl-12">
+		<form enctype="multipart/form-data" action="{{ path('app_loads_importar_excel_plg') }}" method="post" id="form-importar-loads">
+
+			<div class="mb-3">
+				<label class="col-sm-3 text-end control-label col-form-label"> {{ "fuelTransactions.excel.select_file"|trans }}  ...</label>
+				
+					<input type="file" id="archivo_excel" name="archivo_excel"/>
+			
+			</div>
+			
+			<div class="p-3">
+				<div class="form-group text-end">
+					<input type="submit" value="Importar" class="btn btn-primary btn-rounded waves-effect waves-light">
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+	{% for message in app.flashes('result') %}
+		{% for data in message %}
+		
+		 {% if data['status'] == 'success' %}
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+				<ul>
+					
+						<li>{{ "fuelTransactions.excel.fuelTransactions"|trans }} {{data['excel_data']['code']}} {{ "fuelTransactions.excel.success"|trans }}</li>
+					           
+             	</ul>
+			</div>
+		 {% elseif data['status'] == 'warning'  %}
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+				 <ul>
+					{% for alert in data['messages'] %}  
+						<li>{{alert}}</li>
+					{% endfor %}  
+					<li>{{ "fuelTransactions.excel.fuelTransactions"|trans }}: {{data['excel_data']['code']}}</li>
+							          
+             </ul>
+			</div>
+		  {% else %}
+		  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+			 <ul>
+                {% for alert in data['messages'] %}  
+					 <li>{{alert}}</li>
+				{% endfor %}        
+				<li>{{ "fuelTransactions.excel.fuelTransactions"|trans }}: {{data['excel_data']['code']}}</li>          
+			    
+             </ul>
+			 <pre>
+			 {# {{data['excel_data']}}#} 
+			 </pre>
+			</div>
+	     {% endif %}
+		
+		{% endfor %}
+	{% endfor %}
+{% endblock %}
+{% block javascripts %}
+
+	<script>
+		  $(function(){
+        $("#form-importar-loads").on("submit", function(){
+            var filename = $("#archivo_excel").val();
+            var extension = filename.substr(filename.lastIndexOf('.') + 1).toLowerCase();
+            var allowedExtensions = ["xls", "xlsx","csv"];
+            
+            // Validar que se suba un archivo
+            if(!document.getElementById("archivo_excel").files.length){
+                alertify.error("Por favor seleccione un archivo excel con información de autorizaciones a importar");
+                return false;
+            }
+            
+            // Si no es archivo de excel
+            if (allowedExtensions.indexOf(extension) === -1)
+            {
+                alertify.error('Formato de archivo inválido, solamente los formatos ' + allowedExtensions.join(', ') + ' están permitidos.');
+                return false;
+            }
+        });
+    });
+
+       
+
+	</script>
+{% endblock %}

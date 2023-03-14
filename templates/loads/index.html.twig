@@ -21,6 +21,7 @@
 				<div class="card-body">
 					<div class="d-flex flex-wrap gap-2">
 						<a class="btn btn-warning waves-effect waves-light" href="{{ path('app_loads_excel_f5') }}"><i class="fas fa-file-excel"></i> Excel 5F</a>
+						<a class="btn btn-warning waves-effect waves-light" href="{{ path('app_loads_excel_plg') }}"><i class="fas fa-file-excel"></i> Excel PGL</a>
 					</div>
 					<h4 class="card-title">{{ "loads.index.title"|trans }}</h4>
 
@@ -30,10 +31,20 @@
 							{{ "loads.index.new"|trans }}
 						</a>
 					</div>
+					
 					<p class="card-title-desc">{{ "loads.index.description"|trans }}
 
 					</p>
+					
+					<div class="card-options">
+						 <select class="form-control" id="company" name="company">
+						 {% for company in companys %}
+						 <option value="{{company.id}}"> {{company.name}} </option>
 
+						 {% endfor %}
+						</select>
+					</div>
+					<br>
 					<table id="data_table_loads" class="table table-bordered dt-responsive  nowrap w-100">
 						<thead>
 							<tr>
@@ -103,7 +114,7 @@
 				"url": "https://cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
 				},
 				ajax: {
-				"url": '/loads/table',
+				"url": '{{ path('app_loads_table')}}'+'?company='+$("#company").val(),
 				"type": "GET"
 				},
 				columns: [
@@ -166,7 +177,12 @@
 							});
 				});
 
-	
+		$('#company').change(function(){
+       
+                let url = '{{ path('app_loads_table')}}'+'?company='+$("#company").val();
+              $('#data_table_loads').DataTable().ajax.url( url).load();
+        
+            });
 
     });
 		

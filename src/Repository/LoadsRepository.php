@@ -56,7 +56,9 @@ class LoadsRepository extends ServiceEntityRepository
         $pageSize = isset($options['pageSize']) ? $options['pageSize'] : 10;
 
         $query = $this->createQueryBuilder('l')
-        ->leftJoin(Trier::class, 't', Join::WITH,   't.id = l.trier');
+        ->leftJoin(Trier::class, 't', Join::WITH,   't.id = l.trier')
+        ->where('l.company = :company')
+            ->setParameter('company',$options['company']);
         if($options['search']){
             $shearch = '%'.$options['search'].'%';
             $query ->andWhere('l.code like :val  OR l.driverName like :val  OR l.arrivedAtLoader like :val OR t.descrition like :val OR t.percentage like :val')
