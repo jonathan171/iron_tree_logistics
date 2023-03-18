@@ -24,6 +24,9 @@ class LoginController extends AbstractController
             if($this->isGranted('ROLE_ADMIN')){
                 return $this->redirectToRoute('app_user_index');  
             }
+            if($this->isGranted('ROLE_DRIVER')){
+                return $this->redirectToRoute('app_driver');  
+            }
             
          }
 
@@ -49,6 +52,9 @@ class LoginController extends AbstractController
                 return $this->redirectToRoute('app_user_index');  
             }
             
+            if($this->isGranted('ROLE_DRIVER')){
+                return $this->redirectToRoute('app_driver');  
+            }
          }
 
         return $this->render('login/index.html.twig', [

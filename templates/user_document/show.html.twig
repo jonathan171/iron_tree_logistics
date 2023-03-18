@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ "userDocument.show.title"|trans }}
+{% endblock %}
+
+{% block body %}
+
+
+	<table class="table table-bordered dt-responsive  nowrap w-100">
+		<tbody>
+
+			<tr>
+				<th>
+					{{"userDocument.props.cdl"|trans}}</th>
+				<td>
+					<a href="/uploads/images/{{ user_document.cdl }}" class="btn btn-primary waves-effect waves-light w-sm" target="_blank">
+						<i class="mdi mdi-download d-block font-size-16"></i>
+						{{ user_document.cdl }}</a>
+				</td>
+			</tr>
+			<tr>
+				<th>{{"userDocument.props.medical_card"|trans}}</th>
+				<td>
+					<a href="/uploads/images/{{ user_document.medicalCard }}" class="btn btn-primary waves-effect waves-light w-sm" target="_blank">
+						<i class="mdi mdi-download d-block font-size-16"></i>
+						{{ user_document.medicalCard }}</a>
+				</td>
+			</tr>
+			<tr>
+				<th>{{"userDocument.props.h2s"|trans}}</th>
+				<td>
+					<a href="/uploads/images/{{ user_document.h2s }}" class="btn btn-primary waves-effect waves-light w-sm" target="_blank">
+						<i class="mdi mdi-download d-block font-size-16"></i>
+						{{ user_document.h2s }}</a>
+				</td>
+			</tr>
+			<tr>
+				<th>{{"userDocument.props.pec"|trans}}</th>
+				<td>
+					<a href="/uploads/images/{{ user_document.pec }}" class="btn btn-primary waves-effect waves-light w-sm" target="_blank">
+						<i class="mdi mdi-download d-block font-size-16"></i>
+						{{ user_document.pec }}</a>
+				</td>
+			</tr>
+			<tr>
+				<th>{{"userDocument.props.cuestionario"|trans}}</th>
+				<td>
+					<a href="/uploads/images/{{ user_document.cuestionario }}" class="btn btn-primary waves-effect waves-light w-sm" target="_blank">
+						<i class="mdi mdi-download d-block font-size-16"></i>
+						{{ user_document.cuestionario }}</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="card-footer">
+		<a href="{{ path('app_user_document_index') }}" class="btn btn-success">
+			<i class="fe fe-arrow-left"></i>
+			{{ "userDocument.index.back_to_index"|trans }}
+		</a>
+	</div>
+
+{% endblock %}

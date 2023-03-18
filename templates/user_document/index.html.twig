@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ "user.index.title"|trans }}
+{% endblock %}
+
+{% import "macros/datatables.html.twig" as macrodatatable %}
+
+{% block stylesheets %}
+	{{ macrodatatable.styleDatatable}}
+{% endblock %}
+
+{% block body %}
+
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+
+					<h4 class="card-title">{{ "userDocument.index.title"|trans }}</h4>
+                    <div class="card-options">
+							<a href="{{ path('app_user_new') }}" class="btn btn-success">
+								<i class="fe fe-plus"></i>
+								{{ "userDocument.index.new"|trans }}
+							</a>
+						</div>
+					<p class="card-title-desc">{{ "userDocument.index.description"|trans }}
+						
+					</p>
+
+					<table id="data_table_users_document" class="table table-bordered dt-responsive  nowrap w-100">
+						<thead>
+							<tr>
+								<th>
+									{{"userDocument.props.user"|trans}}
+								</th>
+		
+								<th class="text-center">
+									{{ "userDocument.props.actions"|trans }}
+								</th>
+							</tr>
+						</thead>
+						
+						<tbody>
+						
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+		</div>
+		<!-- end col -->
+	</div>
+	<!-- end row -->
+
+{% endblock %}
+{% block javascripts %}
+
+
+	{{ macrodatatable.scriptDatatable}}
+
+	<script>
+
+
+  $(document).ready(function() {
+   
+      $('#data_table_users_document').DataTable({
+            serverSide: true,
+            responsive: true,
+            pageLength: 50,
+            sPaginationType: "full_numbers",
+            language: {
+                "url": "https://cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+            },
+            ajax: {
+                "url": '/user_document/table',
+                "type": "GET"
+            },
+            columns: [
+                {data: 'user'},
+                {data: 'actions'}               
+                ],
+            columnDefs: [
+                
+            ],
+            order: [[ 0, "desc" ]]
+        });
+   });
+	</script>
+{% endblock %}

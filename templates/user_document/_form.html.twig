@@ -1,0 +1,149 @@
+<div class="row">
+	<div class="col-md-12 col-xl-12">
+		{{ form_start(form) }}
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title mb-4">
+					{% if form.vars.data.id %}
+						{{ "userDocument.edit.title"|trans }}
+					{% else %}
+						{{ "userDocument.new.title"|trans }}
+					{% endif %}
+				</h4>
+
+				<div class="mb-3">
+					{{ form_label(form.cdl, "userDocument.props.cdl"|trans) }}
+					{{ form_widget(form.cdl) }}
+					{% if form.vars.data.cdl %}
+						{% set foo = form.vars.data.cdl |split('.') %}
+
+						{% if foo[1]=='pdf' or foo[1]=='xlsx' or foo[1]=='docx' %}
+							<a href="/uploads/images/{{ form.vars.data.cdl }}" class="btn btn-dark">
+								<i class="fa fa-clipboard"></i>
+								{{ form.vars.data.cdl}}
+							</a>
+						{% else %}
+							<div class="row">
+								<div class="col-md-12">
+									<img src="/uploads/images/{{ form.vars.data.cdl }}" alt="{{ form.vars.data.cdl }}" class="img-fluid" style="max-width: 300px;">
+								</div>
+							</div>
+						{% endif %}
+
+					{% endif %}
+				</div>
+
+				<div class="mb-3">
+					{{ form_label(form.medical_card, "userDocument.props.medical_card"|trans) }}
+					{{ form_widget(form.medical_card) }}
+					{% if form.vars.data.medicalCard %}
+						{% set foo = form.vars.data.medicalCard |split('.') %}
+
+						{% if foo[1]=='pdf' or foo[1]=='xlsx' or foo[1]=='docx' %}
+							<a href="/uploads/images/{{ form.vars.data.medicalCard }}" class="btn btn-dark">
+								<i class="fa fa-clipboard"></i>
+								{{ form.vars.data.medicalCard}}
+							</a>
+						{% else %}
+							<div class="row">
+								<div class="col-md-12">
+									<img src="/uploads/images/{{ form.vars.data.medicalCard }}" alt="{{ form.vars.data.medicalCard }}" class="img-fluid" style="max-width: 300px;">
+								</div>
+							</div>
+						{% endif %}
+
+					{% endif %}
+				</div>
+
+				<div class="mb-3">
+					{{ form_label(form.h2s, "userDocument.props.h2s"|trans) }}
+					{{ form_widget(form.h2s) }}
+					{% if form.vars.data.h2s %}
+						{% set foo = form.vars.data.h2s |split('.') %}
+
+						{% if foo[1]=='pdf' or foo[1]=='xlsx' or foo[1]=='docx' %}
+							<a href="/uploads/images/{{ form.vars.data.h2s }}" class="btn btn-dark">
+								<i class="fa fa-clipboard"></i>
+								{{ form.vars.data.h2s}}
+							</a>
+						{% else %}
+							<div class="row">
+								<div class="col-md-12">
+									<img src="/uploads/images/{{ form.vars.data.h2s }}" alt="{{ form.vars.data.h2s }}" class="img-fluid" style="max-width: 300px;">
+								</div>
+							</div>
+						{% endif %}
+
+					{% endif %}
+				</div>
+				<div class="mb-3">
+					{{ form_label(form.pec, "userDocument.props.pec"|trans) }}
+					{{ form_widget(form.pec) }}
+					{% if form.vars.data.pec %}
+						{% set foo = form.vars.data.pec |split('.') %}
+
+						{% if foo[1]=='pdf' or foo[1]=='xlsx' or foo[1]=='docx' %}
+							<a href="/uploads/images/{{ form.vars.data.pec }}" class="btn btn-dark">
+								<i class="fa fa-clipboard"></i>
+								{{ form.vars.data.pec}}
+							</a>
+						{% else %}
+							<div class="row">
+								<div class="col-md-12">
+									<img src="/uploads/images/{{ form.vars.data.pec }}" alt="{{ form.vars.data.pec }}" class="img-fluid" style="max-width: 300px;">
+								</div>
+							</div>
+						{% endif %}
+
+					{% endif %}
+				</div>
+				<div class="mb-3">
+					{{ form_label(form.cuestionario, "userDocument.props.cuestionario"|trans) }}
+					{{ form_widget(form.cuestionario) }}
+					{% if form.vars.data.cuestionario %}
+						{% set foo = form.vars.data.cuestionario |split('.') %}
+
+						{% if foo[1]=='pdf' or foo[1]=='xlsx' or foo[1]=='docx' %}
+							<a href="/uploads/images/{{ form.vars.data.cuestionario }}" class="btn btn-dark">
+								<i class="fa fa-clipboard"></i>
+								{{ form.vars.data.cuestionario}}
+							</a>
+						{% else %}
+							<div class="row">
+								<div class="col-md-12">
+									<img src="/uploads/images/{{ form.vars.data.cuestionario }}" alt="{{ form.vars.data.cuestionario }}" class="img-fluid" style="max-width: 300px;">
+								</div>
+							</div>
+						{% endif %}
+
+					{% endif %}
+				</div>
+				<div style="display:none;">
+					{{ form_rest(form) }}
+				</div>
+				<div class="card-footer">
+					<button class="btn btn-success" type="submit">
+						<i class="fe fe-save"></i>
+
+						{% if form.vars.data.id %}
+							{{ "labels.update"|trans }}
+						{% else %}
+							{{ "labels.save"|trans }}
+						{% endif %}
+					</button>
+					{% if is_granted('ROLE_ADMIN') %}
+						<a href="{{ path('app_user_document_index') }}" class="btn btn-primary">
+							<i class="fe fe-arrow-left"></i>
+							{{ "userDocument.index.back_to_index"|trans }}
+						</a>
+					{% endif %}
+				</div>
+
+			</div>
+			<!-- end card body -->
+		</div>
+		{{ form_end(form) }}
+		<!-- end card -->
+	</div>
+	<!-- end col -->
+</div>

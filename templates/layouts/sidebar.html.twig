@@ -8,7 +8,7 @@
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title" key="t-menu">Menu</li>
-
+                 {% if is_granted('ROLE_ADMIN') %}
                 <li>
                     <a href="{{ path("app_user_index") }}" class="waves-effect">
                         <i class="bx bx-user-circle"></i>
@@ -39,7 +39,13 @@
                         <span key="t-dashboards">{{ "settlement.index.title"|trans }}</span>
                     </a>
                 </li>
-
+                <li>
+                    <a href="{{ path("app_user_document_index") }}" class="waves-effect">
+                        <i class="far fa-file-pdf"></i>
+                        <span key="t-dashboards">{{ "userDocument.index.title"|trans }}</span>
+                    </a>
+                </li>
+                {% endif %}
             </ul>
         </div>
         <!-- Sidebar -->
