@@ -215,14 +215,17 @@ class LoadsController extends AbstractController
             "dispatched_loader" =>  $excel_row[11],
             "bol" => $excel_row[13],
             "driver_name" =>  $excel_row[22],
-            "arrived_at_loader" =>  $excel_row[29],
-            "loaded_distance" =>  $excel_row[41],
-            "line_haul" =>  $excel_row[47],
-            "order_status" =>  $excel_row[50],
-            "billing_status" =>  $excel_row[53]
+            "arrived_at_loader" =>  $excel_row[31],
+            "loaded_distance" =>  $excel_row[43],
+            "line_haul" =>  $excel_row[49],
+            "order_status" =>  $excel_row[52],
+            "billing_status" =>  $excel_row[55]
         );
 
 
+        dump($excel_row);
+        dump($_rowData);
+        die();
 
         $_log["excel_data"] = $_rowData;
 
