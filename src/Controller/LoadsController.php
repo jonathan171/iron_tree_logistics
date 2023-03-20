@@ -215,7 +215,7 @@ class LoadsController extends AbstractController
             "dispatched_loader" =>  $excel_row[11],
             "bol" => $excel_row[13],
             "driver_name" =>  $excel_row[22],
-            "arrived_at_loader" =>  $excel_row[31],
+            "arrived_at_loader" =>  $excel_row[29],
             "loaded_distance" =>  $excel_row[43],
             "line_haul" =>  $excel_row[49],
             "order_status" =>  $excel_row[52],
@@ -224,7 +224,6 @@ class LoadsController extends AbstractController
 
 
     
-
         $_log["excel_data"] = $_rowData;
 
         // Si todos los elementos de la fila estan vacíos, saltelo ...
