@@ -223,9 +223,7 @@ class LoadsController extends AbstractController
         );
 
 
-        dump($excel_row);
-        dump($_rowData);
-        die();
+    
 
         $_log["excel_data"] = $_rowData;
 
