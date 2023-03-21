@@ -4,11 +4,13 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+
 class LoginController extends AbstractController
-{
+{   
     #[Route('/', name: 'app_inicio')]
     public function inicio(AuthenticationUtils $authenticationUtils): Response
     {
@@ -17,6 +19,7 @@ class LoginController extends AbstractController
 
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
+
 
         if($this->getUser()){
 
@@ -62,6 +65,17 @@ class LoginController extends AbstractController
             'error'         => $error,
         ]);
     }
+
+    #[Route(
+        path: '/{_locale}/update_locale',
+        name: 'update_locale'
+    )]
+    public function update(): Response
+    {
+        return $this->redirectToRoute('app_inicio');  
+    }
+
+    
 
     #[Route('/logout', name: 'app_logout', methods: ['GET'])]
     public function logout()

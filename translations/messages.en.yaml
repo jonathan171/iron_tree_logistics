@@ -1,0 +1,279 @@
+# Etiquetas globales
+labels:
+    edit: >
+        Editar
+    delete: >
+        Eliminar
+    new: >
+        Nuevo
+    save: >
+        Guardar
+    update: >
+        Actualizar
+    cancel: >
+        Cancelar
+
+menu:
+    administration: >
+        Administración
+    administration_gestion: >
+        Administración de Gestión
+
+user:
+    props:
+        email: >
+            Email
+        password: >
+            Contraseña
+        first_name: >
+            Nombres
+        last_name: >
+            Apellidos
+        roles: >
+            Roles
+        active: >
+            Activo
+        isVerified: >
+            correo verificado
+        driver_name: >
+            Nombre Conductor
+        actions: >
+            Acciones
+    index:
+        title: >
+            Administración de usuarios
+        description: >
+            El módulo de administración de usuarios permite gestionar los usuarios de la plataforma.
+        new: >
+            Nuevo usuario
+        show: >
+            Vista de usuario
+        no_videos: >
+            Aún no hay usuarios registrados la plataforma.
+        back_to_index: >
+            Volver a la lista de usuarios
+    new:
+        title: >
+            Crear nuevo usuario
+
+    edit:
+        title: >
+            Editar usuario
+
+# traduccion loads
+loads:
+    props:
+        fuel_surcharge: >
+            recargo por combustible
+        well_name: >
+            destino
+        code: >
+            código
+        driver_name: >
+            Transportador
+        arrived_at_loader: >
+            Fecha de Recogida
+        loaded_distance: >
+            Distancia
+        line_haul: >
+            linea de transporte
+        order_status: >
+            estado de Orden
+        billing_status: >
+            estado de factura
+        trier: >
+            Nivel
+        company: >
+            Transportadora
+        actions: >
+            Acciones
+    index:
+        title: >
+            Administración de Cargas
+        description: >
+            El módulo de administración de cargas permite gestionar las cargas de la plataforma.
+        new: >
+            Nueva Carga
+        show: >
+            Vista de Carga
+        no_videos: >
+            Aún no hay cargas registrados la plataforma.
+        back_to_index: >
+            Volver a la lista de cargas
+    new:
+        title: >
+            Crear nueva carga
+    excel:
+        loads: >
+            Cargar
+        success: >
+             Vinculada Correctamente
+        
+    edit:
+        title: >
+            Editar carga
+
+# traduccion fuelTransactions
+fuelTransactions:
+    props:
+        yard_name: >
+            nombre del conductor
+        date: >
+            Fecha
+        paid_amount: >
+            valor Combustible
+        code: >
+            código Transacción
+        settlement_id: >
+            Liquidación
+        company: >
+            Transportadora
+        actions: >
+            Acciones
+    index:
+        title: >
+            Administración de Recargos de  Combustible
+        description: >
+            El módulo de administración de  Recargos de  Combustible permite gestionar los  Recargos de  Combustible de la plataforma.
+        new: >
+            Nuevo  Recargo de  Combustible
+        show: >
+            Vista de Recargo de  Combustible
+        no_fuel_transactions: >
+            Aún no hay Recargos de  Combustible registrados la plataforma.
+        back_to_index: >
+            Volver a la lista de Recargo de  Combustible
+    new:
+        title: >
+            Crear nuevo Recargo de  Combustible
+    excel:
+        fuelTransactions: >
+            Recargo de  Combustible
+        success: >
+             Vinculado Correctamente
+        title: >
+            Importación de Recargos
+        select_file: >
+            Seleccione el archivo
+    edit:
+        title: >
+            Editar carga
+
+# traduccion userCompany
+userCompany:
+    props:
+        user: >
+            Conductor
+        company: >
+            Transportadora
+        discount: >
+            Descuento
+        truck: >
+            Camión
+        actions: >
+            Acciones
+    index:
+        title: >
+            Administración de Conductores por Transportadora
+        description: >
+            El módulo de administración de  Conductores por Transportadora permite vincular cada conductor a una transportadora y el descuento que se le aplicara con esa transportadora.
+        new: >
+            Nuevo  Conductor por Transportadora
+        show: >
+            Vista de Conductor por Transportadora
+        no_usuario_company: >
+            Aún no hay Conductor por Transportadora registrados la plataforma.
+        back_to_index: >
+            Volver a la lista de Conductor por Transportadora
+    new:
+        title: >
+            Crear nuevo Conductor por Transportadora
+    edit:
+        title: >
+            Editar Conductor por Transportadora
+
+# traduccion settlement
+settlement:
+    props:
+        fecha_in: >
+           Fecha Inicial
+        fecha_fin: >
+            Fecha Fin
+        driver: >
+            Conductor
+        company: >
+            Transportadora
+        new_deductions: >
+            Agregar Deducción
+        deductions_name: >
+            nombre
+        deductions_value: >
+            Monto
+
+    index:
+        title: >
+            Desprendible de Nómina
+
+# traduccion loadDeductions
+loadDeductions:
+    props:
+        description: >
+           descripción
+        amount: >
+            valor
+        loads: >
+            Carga
+    index:
+        title: >
+           Deducciones 
+
+# traduccion driver
+driver:
+    props:
+    index:
+        title: >
+           Deducciones 
+    new:
+        title: >
+            Subir Documentos
+    edit:
+        title: >
+            Actualizar Documentos
+
+# traduccion userCompany
+userDocument:
+    props:
+        user: >
+            Conductor
+        cdl: >
+            Cdl
+        medical_card: >
+            Medical Card
+        h2s: >
+            H2S
+        pec: >
+            Pec
+        cuestionario: >
+            Cuestionario
+        actions: >
+            Acciones
+    index:
+        title: >
+            Administración de Documentos por Conductor
+        description: >
+            El módulo de administración de Documentos por COnductor permite tener un control de los documentos que deben subir cada uno.
+        new: >
+            Nuevo  Documento
+        show: >
+            Vista De Documentos
+        no_usuario_company: >
+            Aún no hay Docuementos de ningun conductor.
+        back_to_index: >
+            Volver a la lista de Documentos por Conductor
+    new:
+        title: >
+            Subir Nuevos documentos
+    edit:
+        title: >
+            Editar Documentos
+        
