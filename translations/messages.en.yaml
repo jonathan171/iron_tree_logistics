@@ -1,101 +1,101 @@
 # Etiquetas globales
 labels:
     edit: >
-        Editar
+        Edit
     delete: >
-        Eliminar
+        Remove
     new: >
-        Nuevo
+        New
     save: >
-        Guardar
+        Save
     update: >
-        Actualizar
+        Update
     cancel: >
-        Cancelar
+        Cancel
 
 menu:
     administration: >
-        Administración
+        Administration
     administration_gestion: >
-        Administración de Gestión
+        Management Administration
 
 user:
     props:
         email: >
             Email
         password: >
-            Contraseña
+            Password
         first_name: >
-            Nombres
+            Names
         last_name: >
-            Apellidos
+            Last name
         roles: >
             Roles
         active: >
-            Activo
+            Active
         isVerified: >
-            correo verificado
+            verified email
         driver_name: >
-            Nombre Conductor
+            Driver Name
         actions: >
-            Acciones
+            Actions
     index:
         title: >
-            Administración de usuarios
+            User administration
         description: >
-            El módulo de administración de usuarios permite gestionar los usuarios de la plataforma.
+            The user administration module allows you to manage the users of the platform.
         new: >
-            Nuevo usuario
+            New user
         show: >
-            Vista de usuario
+            User view
         no_videos: >
-            Aún no hay usuarios registrados la plataforma.
+            There are no registered users on the platform yet.
         back_to_index: >
-            Volver a la lista de usuarios
+            Back to user list
     new:
         title: >
-            Crear nuevo usuario
+            Create new user
 
     edit:
         title: >
-            Editar usuario
+            Edit user
 
 # traduccion loads
 loads:
     props:
         fuel_surcharge: >
-            recargo por combustible
+            fuel surcharge
         well_name: >
-            destino
+            name of the well
         code: >
-            código
+            code
         driver_name: >
-            Transportador
+            driver name
         arrived_at_loader: >
-            Fecha de Recogida
+            Collection Date
         loaded_distance: >
-            Distancia
+            Distance
         line_haul: >
-            linea de transporte
+            transport line
         order_status: >
-            estado de Orden
+            order status
         billing_status: >
-            estado de factura
+            invoice status
         trier: >
-            Nivel
+            Tier
         company: >
-            Transportadora
+            Conveyor
         actions: >
-            Acciones
+            Actions
     index:
         title: >
-            Administración de Cargas
+            Load Management
         description: >
-            El módulo de administración de cargas permite gestionar las cargas de la plataforma.
+            The load management module allows you to manage platform loads.
         new: >
-            Nueva Carga
+            New Load
         show: >
-            Vista de Carga
+            Load View
         no_videos: >
             Aún no hay cargas registrados la plataforma.
         back_to_index: >
