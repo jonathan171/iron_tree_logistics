@@ -61,7 +61,7 @@ class LoadsRepository extends ServiceEntityRepository
             ->setParameter('company',$options['company']);
         if($options['search']){
             $shearch = '%'.$options['search'].'%';
-            $query ->andWhere('l.code like :val  OR l.driverName like :val  OR l.arrivedAtLoader like :val OR t.descrition like :val OR t.percentage like :val')
+            $query ->andWhere('l.code like :val  OR l.driver_name like :val  OR l.arrived_at_loader like :val OR t.description like :val OR t.percentage like :val')
             ->setParameter('val',$shearch);
         }
        
