@@ -97,154 +97,154 @@ loads:
         show: >
             Load View
         no_videos: >
-            Aún no hay cargas registrados la plataforma.
+            No uploads have yet been registered on the platform.
         back_to_index: >
-            Volver a la lista de cargas
+            Back to the list of loads
     new:
         title: >
-            Crear nueva carga
+            Create new load
     excel:
         loads: >
-            Cargar
+            Upload
         success: >
-             Vinculada Correctamente
+            Properly linked
         
     edit:
         title: >
-            Editar carga
+            Edit load
 
 # traduccion fuelTransactions
 fuelTransactions:
     props:
         yard_name: >
-            nombre del conductor
+            driver's name
         date: >
-            Fecha
+            Date
         paid_amount: >
-            valor Combustible
+            Fuel value
         code: >
-            código Transacción
+            Transaction code
         settlement_id: >
-            Liquidación
+            Settlement
         company: >
-            Transportadora
+            Conveyor
         actions: >
-            Acciones
+            Actions
     index:
         title: >
-            Administración de Recargos de  Combustible
+            Fuel Surcharge Administration
         description: >
-            El módulo de administración de  Recargos de  Combustible permite gestionar los  Recargos de  Combustible de la plataforma.
+            The Fuel Surcharge administration module allows you to manage fuel surcharges on the platform.
         new: >
-            Nuevo  Recargo de  Combustible
+            New Fuel Surcharge
         show: >
-            Vista de Recargo de  Combustible
+            Fuel Surcharge View
         no_fuel_transactions: >
-            Aún no hay Recargos de  Combustible registrados la plataforma.
+            There are no Fuel Surcharges registered on the platform yet.
         back_to_index: >
-            Volver a la lista de Recargo de  Combustible
+            Back to Fuel Surcharge List
     new:
         title: >
-            Crear nuevo Recargo de  Combustible
+            Create new Fuel Surcharge
     excel:
         fuelTransactions: >
-            Recargo de  Combustible
+            Fuel Surcharge
         success: >
-             Vinculado Correctamente
+            Correctly Linked
         title: >
-            Importación de Recargos
+            Importing surcharges
         select_file: >
-            Seleccione el archivo
+            Select file
     edit:
         title: >
-            Editar carga
+            Edit load
 
 # traduccion userCompany
 userCompany:
     props:
         user: >
-            Conductor
+            Driver
         company: >
-            Transportadora
+            Conveyor
         discount: >
-            Descuento
+            Discount
         truck: >
-            Camión
+            Truck
         actions: >
-            Acciones
+            Actions
     index:
         title: >
-            Administración de Conductores por Transportadora
+            Driver Management by Conveyor
         description: >
-            El módulo de administración de  Conductores por Transportadora permite vincular cada conductor a una transportadora y el descuento que se le aplicara con esa transportadora.
+            The Driver by Carrier administration module allows you to link each driver to a carrier and the discount that will be applied to that carrier.
         new: >
-            Nuevo  Conductor por Transportadora
+            New Driver for Conveyor
         show: >
-            Vista de Conductor por Transportadora
+            Driver View by Conveyor
         no_usuario_company: >
-            Aún no hay Conductor por Transportadora registrados la plataforma.
+            There is no Driver per Conveyor registered on the platform yet.
         back_to_index: >
-            Volver a la lista de Conductor por Transportadora
+            Back to list of Driver by Carrier
     new:
         title: >
-            Crear nuevo Conductor por Transportadora
+            Create new Driver by Conveyor
     edit:
         title: >
-            Editar Conductor por Transportadora
+            Edit Driver by Conveyor
 
 # traduccion settlement
 settlement:
     props:
         fecha_in: >
-           Fecha Inicial
+           Initial Date
         fecha_fin: >
-            Fecha Fin
+            Date End
         driver: >
-            Conductor
+            Driver
         company: >
-            Transportadora
+            Conveyor
         new_deductions: >
-            Agregar Deducción
+            Add Deduction
         deductions_name: >
-            nombre
+            name
         deductions_value: >
-            Monto
+            Amount
 
     index:
         title: >
-            Desprendible de Nómina
+            Payroll detachable
 
 # traduccion loadDeductions
 loadDeductions:
     props:
         description: >
-           descripción
+           description
         amount: >
-            valor
+            value
         loads: >
-            Carga
+            Load
     index:
         title: >
-           Deducciones 
+           Deductions 
 
 # traduccion driver
 driver:
     props:
     index:
         title: >
-           Deducciones 
+           Deductions 
     new:
         title: >
-            Subir Documentos
+            Upload Documents
     edit:
         title: >
-            Actualizar Documentos
+            Update Documents
 
 # traduccion userCompany
 userDocument:
     props:
         user: >
-            Conductor
+            Driver
         cdl: >
             Cdl
         medical_card: >
@@ -254,26 +254,26 @@ userDocument:
         pec: >
             Pec
         cuestionario: >
-            Cuestionario
+            Questionnaire
         actions: >
-            Acciones
+            Actions
     index:
         title: >
-            Administración de Documentos por Conductor
+            Document Management by Driver
         description: >
-            El módulo de administración de Documentos por COnductor permite tener un control de los documentos que deben subir cada uno.
+            The Documents management module by COnductor allows to have a control of the documents to be uploaded by each one.
         new: >
-            Nuevo  Documento
+            New Document
         show: >
-            Vista De Documentos
+            Document View
         no_usuario_company: >
-            Aún no hay Docuementos de ningun conductor.
+            There are no Docuementos of any driver yet.
         back_to_index: >
-            Volver a la lista de Documentos por Conductor
+            Back to the list of Documents by Driver
     new:
         title: >
-            Subir Nuevos documentos
+            Upload New Documents
     edit:
         title: >
-            Editar Documentos
+            Edit Documents
         
