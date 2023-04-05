@@ -346,7 +346,7 @@ class SettlementController extends AbstractController
             ->andWhere('ft.date <= :fecha_fin')
             ->setParameter('fecha_fin', $fecha_fin)
             ->andWhere('ft.company = :company')
-            ->setParameter('company', 1)
+            ->setParameter('company', 2)
             ->getQuery()->getResult();
 
 
@@ -357,7 +357,7 @@ class SettlementController extends AbstractController
             ->where('uc.user = :user')
             ->setParameter('user', $usuario->getId())
             ->andWhere('uc.company = :company')
-            ->setParameter('company', 1)
+            ->setParameter('company', 2)
             ->setMaxResults(1)
             ->getQuery()->getOneOrNullResult();
 
