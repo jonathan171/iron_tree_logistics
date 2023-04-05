@@ -396,8 +396,7 @@ class LoadsController extends AbstractController
             "messages" => array(),
             "data" => array()
         );
-        dump($excel_row);
-        die();
+        
 
         $_rowData = array(
             "fuel_surcharge" => $excel_row[16],
