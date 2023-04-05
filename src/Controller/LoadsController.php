@@ -353,12 +353,14 @@ class LoadsController extends AbstractController
             foreach ($rows as $row) {
 
                 if ($i >= 7) {
+                    
                     $_log = $this->processEnvioExcelRowPlg($row);
 
 
                     if ($_log) {
                         $result[] = $_log;
                     }
+
                 }
                 $i++;
                 // this is where you do your database stuff
@@ -389,7 +391,9 @@ class LoadsController extends AbstractController
      */
     private function processEnvioExcelRowPlg($excel_row)
     {
-       
+        
+
+
         /* @var $grupoAutorizacion GrupoAutorizacion */
         $_log = array(
             "status" => "success",
