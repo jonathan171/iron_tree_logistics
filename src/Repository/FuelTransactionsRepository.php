@@ -7,6 +7,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @extends ServiceEntityRepository<FuelTransactions>
@@ -17,9 +18,12 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method FuelTransactions[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class FuelTransactionsRepository extends ServiceEntityRepository
-{
-    public function __construct(ManagerRegistry $registry)
-    {
+{   
+    protected $traslator;
+
+    public function __construct(ManagerRegistry $registry, TranslatorInterface $traslator)
+    {   
+        $this->traslator = $traslator;
         parent::__construct($registry, FuelTransactions::class);
     }
 
@@ -63,7 +67,7 @@ class FuelTransactionsRepository extends ServiceEntityRepository
         
         foreach ($paginator as $item) {
 
-            $actions= '<a  class="btn waves-effect waves-light btn-info" href="/fuel_transactions/'.$item->getId().'/edit">editar</a>';
+            $actions= '<a  class="btn waves-effect waves-light btn-info" href="/fuel_transactions/'.$item->getId().'/edit">'. $this->traslator->trans('labels.edit') .'</a>';
 
            
            

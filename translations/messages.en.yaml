@@ -6,6 +6,8 @@ labels:
         Remove
     new: >
         New
+    show: >
+        Show
     save: >
         Save
     update: >

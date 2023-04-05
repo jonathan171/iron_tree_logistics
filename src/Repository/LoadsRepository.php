@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @extends ServiceEntityRepository<Loads>
@@ -21,11 +22,13 @@ use Doctrine\Persistence\ManagerRegistry;
 class LoadsRepository extends ServiceEntityRepository
 {   
     protected $manager;
+    protected $traslator;
 
-    public function __construct(ManagerRegistry $registry, EntityManagerInterface $manager)
+    public function __construct(ManagerRegistry $registry, EntityManagerInterface $manager, TranslatorInterface $traslator)
     {
 
         $this->manager = $manager;
+        $this->traslator = $traslator;
         parent::__construct($registry, Loads::class);
 
     }
@@ -74,7 +77,7 @@ class LoadsRepository extends ServiceEntityRepository
         $triers = $this->manager->getRepository(Trier::class)->findAll();
         foreach ($paginator as $item) {
 
-            $actions= '<a  class="btn waves-effect waves-light btn-info" href="/loads/'.$item->getId().'/edit">editar</a>';
+            $actions= '<a  class="btn waves-effect waves-light btn-info" href="/loads/'.$item->getId().'/edit">'. $this->traslator->trans('labels.edit') .'</a>';
 
             $actions.='<a class="icon-select"  style="position:relative; float:right;cursor:pointer;" onclick="deductions('.$item->getId().');"  title="deductions">
             <i class="fa fa-eye text-success" ></i>

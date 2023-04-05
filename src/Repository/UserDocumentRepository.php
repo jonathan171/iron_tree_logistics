@@ -8,6 +8,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @extends ServiceEntityRepository<UserDocument>
@@ -18,9 +19,12 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method UserDocument[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class UserDocumentRepository extends ServiceEntityRepository
-{
-    public function __construct(ManagerRegistry $registry)
-    {
+{   
+    protected $traslator;
+
+    public function __construct(ManagerRegistry $registry, TranslatorInterface $traslator)
+    {   
+        $this->traslator = $traslator;
         parent::__construct($registry, UserDocument::class);
     }
 
@@ -65,8 +69,8 @@ class UserDocumentRepository extends ServiceEntityRepository
         
         foreach ($paginator as $item) {
 
-            $actions= '<a  class="btn waves-effect waves-light btn-warning" href="/user_document/'.$item->getId().'/edit">editar</a>';
-            $actions.= '<a  class="btn waves-effect waves-light btn-info" href="/user_document/'.$item->getId().'/show">Ver</a>';
+            $actions= '<a  class="btn waves-effect waves-light btn-warning" href="/user_document/'.$item->getId().'/edit">'. $this->traslator->trans('labels.edit') .'</a>';
+            $actions.= '<a  class="btn waves-effect waves-light btn-info" href="/user_document/'.$item->getId().'/show">'. $this->traslator->trans('labels.show') .'</a>';
            
             
            
