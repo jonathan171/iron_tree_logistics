@@ -338,7 +338,7 @@ class LoadsController extends AbstractController
             }
 
 
-            $reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
+            $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReaderForFile($file->getRealPath());
 
             // Need this otherwise dates and such are returned formatted
             /** @noinspection PhpUndefinedMethodInspection */
@@ -352,7 +352,7 @@ class LoadsController extends AbstractController
             $result = array();
             foreach ($rows as $row) {
 
-                if ($i >= 1) {
+                if ($i >= 7) {
                     $_log = $this->processEnvioExcelRowPlg($row);
 
 
@@ -396,16 +396,17 @@ class LoadsController extends AbstractController
             "messages" => array(),
             "data" => array()
         );
-       
+        dump($excel_row);
+        die();
 
         $_rowData = array(
-            "fuel_surcharge" => 0,
+            "fuel_surcharge" => $excel_row[16],
             "well_name" => $excel_row[5],
             "code" =>  $excel_row[0],
             "dispatched_loader" =>  $excel_row[4],
             "bol" => $excel_row[1],
             "driver_name" =>  $excel_row[8],
-            "arrived_at_loader" =>  new DateTime($excel_row[11]),
+            "arrived_at_loader" =>  \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($excel_row[11]),
             "loaded_distance" =>  $excel_row[7],
             "line_haul" =>  $excel_row[14],
             "order_status" =>  $excel_row[12],
