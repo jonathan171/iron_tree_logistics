@@ -134,7 +134,7 @@ fuelTransactions:
             Actions
     index:
         title: >
-            Fuel Surcharge Administration
+            Fuel Surcharge
         description: >
             The Fuel Surcharge administration module allows you to manage fuel surcharges on the platform.
         new: >
@@ -176,7 +176,7 @@ userCompany:
             Actions
     index:
         title: >
-            Driver Management by Conveyor
+            Driver by Conveyor
         description: >
             The Driver by Carrier administration module allows you to link each driver to a carrier and the discount that will be applied to that carrier.
         new: >
@@ -261,7 +261,7 @@ userDocument:
             Actions
     index:
         title: >
-            Document Management by Driver
+            Document by Driver
         description: >
             The Documents management module by COnductor allows to have a control of the documents to be uploaded by each one.
         new: >
