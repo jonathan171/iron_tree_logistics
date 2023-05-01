@@ -42,10 +42,11 @@ class UserController extends AbstractController
     
         $start = $datatableParameters["start"];
         $length = $datatableParameters["length"];
+        $order = $datatableParameters["order"][0];
 
         
 
-        $data_table  = $userRepository->findByDataTable(['page' => ($start/$length), 'pageSize' => $length, 'search' => $search['value']]);
+        $data_table  = $userRepository->findByDataTable(['page' => ($start/$length), 'pageSize' => $length, 'search' => $search['value'], 'order' =>$order]);
 
     
 

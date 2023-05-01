@@ -66,6 +66,11 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         
         $currentPage = isset($options['page']) ? $options['page'] : 0;
         $pageSize = isset($options['pageSize']) ? $options['pageSize'] : 10;
+        $campos = array(
+            'email',
+            'first_name',
+            'last_name'
+        );
 
         $query = $this->createQueryBuilder('u');
         if($options['search']){
@@ -73,6 +78,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             $query ->andWhere('u.email like :val OR u.first_name like :val2 OR u.last_name like :val3 ')
             ->setParameters(['val'=>$shearch,'val2'=>$shearch,'val3'=>$shearch]);
         }
+        $query->orderBy("u.{$campos[$options['order']['column']]}" ,$options['order']['dir']);
        
         $query->getQuery();
         $paginator = new Paginator($query);

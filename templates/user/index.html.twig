@@ -40,27 +40,14 @@
 								<th>
 									{{ "user.props.last_name"|trans }}
 								</th>
-								<th class="text-center">
+								<th class="text-center no-sort">
 									{{ "user.props.actions"|trans }}
 								</th>
 							</tr>
 						</thead>
 						
 						<tbody>
-						<tr>
-								<th>
-									{{"user.props.email"|trans}}
-								</th>
-								<th>
-									{{"user.props.first_name"|trans}}
-								</th>
-								<th>
-									{{ "user.props.last_name"|trans }}
-								</th>
-								<th class="text-center">
-									{{ "user.props.actions"|trans }}
-								</th>
-							</tr>
+						
 						</tbody>
 					</table>
 
@@ -101,7 +88,7 @@
                 {data: 'actions'}               
                 ],
             columnDefs: [
-                
+                { orderable: false, targets: 3 }
             ],
             order: [[ 0, "desc" ]]
         });
