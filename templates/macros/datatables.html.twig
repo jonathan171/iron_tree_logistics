@@ -3,7 +3,14 @@
 {% endmacro %}
 
 {% macro scriptDatatable() %}
-       <script src="{{ asset('assets/libs/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables/datatables.min.js') }}"></script>
     <script src="{{ asset('assets/libs/jszip/jszip.min.js') }}"></script>
     <script src="{{ asset('assets/libs/pdfmake/pdfmake.min.js') }}"></script>
+    <script>
+    {% if app.request.locale == 'en' %}
+				var url_lenguage = "https://cdn.datatables.net/plug-ins/1.10.16/i18n/English.json";
+			{% else %}
+				var url_lenguage = "https://cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json";
+			{% endif %} 
+    </script>
 {% endmacro %}
