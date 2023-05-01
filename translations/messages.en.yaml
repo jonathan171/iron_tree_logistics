@@ -66,23 +66,23 @@ user:
 loads:
     props:
         fuel_surcharge: >
-            fuel surcharge
+            Fuel surcharge
         well_name: >
-            name of the well
+            Name of the well
         code: >
-            code
+            Code
         driver_name: >
-            driver name
+            Driver name
         arrived_at_loader: >
             Collection Date
         loaded_distance: >
             Distance
         line_haul: >
-            transport line
+            Transport line
         order_status: >
-            order status
+            Order status
         billing_status: >
-            invoice status
+            Invoice status
         trier: >
             Tier
         company: >
@@ -119,7 +119,7 @@ loads:
 fuelTransactions:
     props:
         yard_name: >
-            driver's name
+            Driver's name
         date: >
             Date
         paid_amount: >
@@ -208,7 +208,7 @@ settlement:
         new_deductions: >
             Add Deduction
         deductions_name: >
-            name
+            Name
         deductions_value: >
             Amount
 
@@ -220,9 +220,9 @@ settlement:
 loadDeductions:
     props:
         description: >
-           description
+           Description
         amount: >
-            value
+            Value
         loads: >
             Load
     index:

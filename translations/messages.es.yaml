@@ -36,14 +36,14 @@ user:
         active: >
             Activo
         isVerified: >
-            correo verificado
+            Correo verificado
         driver_name: >
             Nombre Conductor
         actions: >
             Acciones
     index:
         title: >
-            usuarios
+            Usuarios
         description: >
             El módulo de administración de usuarios permite gestionar los usuarios de la plataforma.
         new: >
@@ -66,11 +66,11 @@ user:
 loads:
     props:
         fuel_surcharge: >
-            recargo por combustible
+            Recargo por combustible
         well_name: >
-            destino
+            Destino
         code: >
-            código
+            Código
         driver_name: >
             Transportador
         arrived_at_loader: >
@@ -78,11 +78,11 @@ loads:
         loaded_distance: >
             Distancia
         line_haul: >
-            linea de transporte
+            Linea de transporte
         order_status: >
-            estado de Orden
+            Estado de Orden
         billing_status: >
-            estado de factura
+            Estado de factura
         trier: >
             Nivel
         company: >
@@ -119,13 +119,13 @@ loads:
 fuelTransactions:
     props:
         yard_name: >
-            nombre del conductor
+            Nombre del conductor
         date: >
             Fecha
         paid_amount: >
-            valor Combustible
+            Valor Combustible
         code: >
-            código Transacción
+            Código Transacción
         settlement_id: >
             Liquidación
         company: >
@@ -208,7 +208,7 @@ settlement:
         new_deductions: >
             Agregar Deducción
         deductions_name: >
-            nombre
+            Nombre
         deductions_value: >
             Monto
 
@@ -220,9 +220,9 @@ settlement:
 loadDeductions:
     props:
         description: >
-           descripción
+           Descripción
         amount: >
-            valor
+            Valor
         loads: >
             Carga
     index:
