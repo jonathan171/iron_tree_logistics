@@ -54,7 +54,7 @@ class FuelTransactionsRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('f');
         if($options['search']){
             $shearch = '%'.$options['search'].'%';
-            $query ->andWhere('f.code like :val  OR f.yardName like :val  OR f.date like :val ')
+            $query ->andWhere('f.code like :val  OR f.yard_name like :val  OR f.date like :val ')
             ->setParameter('val',$shearch);
         }
        
