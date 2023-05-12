@@ -69,22 +69,24 @@
 
 	<script>
 		  $(function(){
-        $("#form-importar-loads").on("submit", function(){
+        $("#form-importar-loads").on("submit", function(e){
             var filename = $("#archivo_excel").val();
             var extension = filename.substr(filename.lastIndexOf('.') + 1).toLowerCase();
             var allowedExtensions = ["xls", "xlsx","csv"];
             
             // Validar que se suba un archivo
             if(!document.getElementById("archivo_excel").files.length){
-                alertify.error("Por favor seleccione un archivo excel con información de autorizaciones a importar");
-                return false;
+                alert("Por favor seleccione un archivo excel con información de autorizaciones a importar");
+                e.preventDefault();
+				return false;
             }
             
             // Si no es archivo de excel
             if (allowedExtensions.indexOf(extension) === -1)
             {
-                alertify.error('Formato de archivo inválido, solamente los formatos ' + allowedExtensions.join(', ') + ' están permitidos.');
-                return false;
+                alert('Formato de archivo inválido, solamente los formatos ' + allowedExtensions.join(', ') + ' están permitidos.');
+                e.preventDefault();
+				return false;
             }
         });
     });
