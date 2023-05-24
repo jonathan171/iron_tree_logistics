@@ -118,7 +118,11 @@
 				</tr>
 			</table>
 		</td>
-		{% set itl = total_loads * (discount.discount / 100) %}
+		{% if discount %}
+			{% set itl = total_loads * (discount.discount / 100) %}
+		{% else %}
+			{% set itl = 0 %}
+		{% endif %}
 		{% set total_deductions = 0 %}
 		<td style="width:33%">
 			<table border="1" style="text-align:center; width:80%;">
