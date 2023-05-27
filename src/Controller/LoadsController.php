@@ -400,6 +400,13 @@ class LoadsController extends AbstractController
             "messages" => array(),
             "data" => array()
         );
+
+        if ( is_numeric($excel_row[11])){
+            $fecha = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($excel_row[11]);
+        }else{
+            $fecha = new DateTime($excel_row[11]);
+        }
+        echo $fecha->format('Y-m-d');
         dump($excel_row);
         die();
 
