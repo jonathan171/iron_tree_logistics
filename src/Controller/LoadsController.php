@@ -406,9 +406,7 @@ class LoadsController extends AbstractController
         }else{
             $fecha = new DateTime($excel_row[11]);
         }
-        echo $fecha->format('Y-m-d');
-        dump($excel_row);
-        die();
+        
 
         $_rowData = array(
             "fuel_surcharge" => $excel_row[16],
@@ -417,7 +415,7 @@ class LoadsController extends AbstractController
             "dispatched_loader" =>  $excel_row[4],
             "bol" => $excel_row[1],
             "driver_name" =>  $excel_row[8],
-            "arrived_at_loader" =>  \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($excel_row[11]),
+            "arrived_at_loader" =>   $fecha,
             "loaded_distance" =>  $excel_row[7],
             "line_haul" =>  $excel_row[14],
             "order_status" =>  $excel_row[12],
