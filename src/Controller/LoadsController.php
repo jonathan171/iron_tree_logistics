@@ -400,7 +400,6 @@ class LoadsController extends AbstractController
             "messages" => array(),
             "data" => array()
         );
-        dump($excel_row);
 
         if ( is_numeric($excel_row[11])){
             $fecha = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($excel_row[11]);
@@ -422,8 +421,7 @@ class LoadsController extends AbstractController
             "order_status" =>  $excel_row[12],
             "billing_status" =>  'Invoice Approved'
         );
-        dump($_rowData);
-        die();
+
 
 
         $_log["excel_data"] = $_rowData;
