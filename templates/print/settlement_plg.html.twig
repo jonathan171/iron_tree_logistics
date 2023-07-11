@@ -42,7 +42,7 @@
 		<th style="width:5%;">Mileage</th>
 		<th style="width:8%;">Line Haul</th>
 		<th style="width:8%;">Fuel Surcharge</th>
-		<th style="width:8%;">Tier</th>
+		
 		<th style="width:8%;">Sub-Total</th>
 	</tr>
 	{% set total_loads = 0 %}
@@ -70,20 +70,14 @@
 				${{load.fuelSurcharge}}</td>
 			{% set base = load.lineHaul + load.fuelSurcharge %}
 
-			{% if load.trier %}
-				{% set descuento = (base - (base * (load.trier.percentage / 100))) %}
-			{% else %}
-				{% set descuento = 0 %}
-
-			{% endif %}
-			<td>- ${{descuento}}</td>
+			
 			{% set total_load =  base - descuento %}
 			<td>{{total_load}}</td>
 		</tr>
 		{% set total_loads = total_loads + total_load %}
 	{% endfor %}
 	<tr>
-		<td colspan="9"></td>
+		<td colspan="8"></td>
 		<td colspan="2">
 			<b>LOADS TOTAL</b>
 		</td>
